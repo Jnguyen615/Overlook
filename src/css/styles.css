@@ -1,3 +1,44 @@
+* {
+  font-family: 'Quicksand', sans-serif;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 body {
-  background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+  background-image: url('https://images.unsplash.com/photo-1500835556837-99ac94a94552?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80');
+  background-size:cover
+}
+
+h1 {
+  text-align: center;
+  color: aliceblue;
+  font-size: xxx-large
+}
+
+h2 {
+  text-align: center;
+  color: lightsteelblue
+}
+
+.sign-in {
+  text-align: center;
+}
+
+.form {
+  text-align: center;
+  border: 2px solid lightsteelblue;
+  width: 30vw;
+  height: 30vh;
+  margin-top: 17%;
+  box-shadow: 
+    inset 5px 5px 10px hsl(208, 50%, 75%), 
+    inset -5px -5px 10px rgb(220, 220, 239);
+}
+
+.display {
+  display: block;
 }
