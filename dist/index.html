@@ -4,12 +4,30 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+  <title>Overlook:A booking Website </title>
 </head>
 <body>
-  <img src="./images/turing-logo.png" alt="turing logo">
-  
-  <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
+  <main>
+    <h1>Overlook: A Booking Website</h1>
+    <div class="form"> 
+      <form action="" id="login-form">
+        <div class="headings-container">
+          <h2>Login</h2>
+          <p class="sign-in">Sign in with your username and password</p>
+        </div>
+        <div class="main-container">
+          <label for="username">Your Username</label>
+          <input type="text" placeholder="Enter Username" name="username" required> 
+          <br><br>
+          <label for="password">Your Password</label>
+          <input type="text" placeholder="Enter Password" name="password" required>
+          <br> <br>
+          <button id="login-button" type="submit">Login</button>
+        </div>
+      </form>
+    </div>
+  </main>
   <script src="bundle.js"></script>
 
 </body>
