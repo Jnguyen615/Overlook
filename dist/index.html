@@ -1,34 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
-  <title>Overlook:A booking Website </title>
-</head>
-<body>
-  <main>
-    <h1>Overlook: A Booking Website</h1>
-    <div class="form"> 
-      <form action="" id="login-form">
-        <div class="headings-container">
-          <h2>Login</h2>
-          <p class="sign-in">Sign in with your username and password</p>
-        </div>
-        <div class="main-container">
-          <label for="username">Your Username</label>
-          <input type="text" placeholder="Enter Username" name="username" required> 
-          <br><br>
-          <label for="password">Your Password</label>
-          <input type="text" placeholder="Enter Password" name="password" required>
-          <br> <br>
-          <button id="login-button" type="submit">Login</button>
-        </div>
-      </form>
-    </div>
-  </main>
-  <script src="bundle.js"></script>
-
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Fuggles&display=swap" rel="stylesheet"/>
+    <title>Overlook:A booking Website</title>
+  </head>
+  <body>
+    <main>
+      <h1 class="title" hidden>Overlook: A Hotel Booking Website</h1>
+      <section class="form" hidden>
+        <form action="" id="login-form" hidden>
+          <div class="headings-container">
+            <h2>Login</h2>
+            <p class="sign-in">Sign in with your username and password</p>
+          </div>
+          <div class="main-container">
+            <label for="username">Your Username</label>
+            <input
+              type="text"
+              placeholder="Enter Username"
+              name="username"
+              required
+            />
+            <br /><br />
+            <label for="password">Your Password</label>
+            <input
+              type="text"
+              placeholder="Enter Password"
+              name="password"
+              required
+            />
+            <br />
+            <br />
+            <button id="login-button" type="submit" aria-label="Login">
+              Login
+            </button>
+          </div>
+        </form>
+      </section>
+      <section class="main-page-view-top-bar-left">
+        <p class="overlook-logo">Overlook</p>
+        <p class="hello">Hello, User</p>
+      </section>
+      </section>
+      <section class="main-page-view">
+        <section id="past-bookings-section">
+          <p>Past Bookings</p>
+          <section class="past-booking-cards">
+            <!-- Past Bookings Cards Appear Here -->
+          </section>
+        </section>
+        <section id="upcoming-bookings-section">
+          <p>Upcoming Bookings</p>
+          <section class="upcoming-bookings-cards">
+            <!-- Upcoming bookings cards appear here -->
+          </section>
+        </section>
+      </section>
+      <section class="search-section">
+        <section class="new-booking-area">
+          <p class="new-booking">Book Now!</p>
+          <!-- html for calender/filtered room search -->
+        <section>
+          <p class="total-spent"></p> <!-- Total customer has spent will go here-->
+        </section>
+        </section>
+      </section>
+      <section class="new-bookings-view"></section>
+    </main>
+    <script src="bundle.js"></script>
+  </body>
 </html>
