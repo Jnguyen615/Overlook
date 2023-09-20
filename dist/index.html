@@ -1,34 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
-  <title>Overlook:A booking Website </title>
-</head>
-<body>
-  <main>
-    <h1>Overlook: A Booking Website</h1>
-    <div class="form"> 
-      <form action="" id="login-form">
-        <div class="headings-container">
-          <h2>Login</h2>
-          <p class="sign-in">Sign in with your username and password</p>
-        </div>
-        <div class="main-container">
-          <label for="username">Your Username</label>
-          <input type="text" placeholder="Enter Username" name="username" required> 
-          <br><br>
-          <label for="password">Your Password</label>
-          <input type="text" placeholder="Enter Password" name="password" required>
-          <br> <br>
-          <button id="login-button" type="submit">Login</button>
-        </div>
-      </form>
-    </div>
-  </main>
-  <script src="bundle.js"></script>
-
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <title>Overlook:A booking Website</title>
+  </head>
+  <body>
+    <main>
+      <h1>Overlook: A Hotel Booking Website</h1>
+      <section class="form" hidden>
+        <form action="" id="login-form" hidden>
+          <div class="headings-container">
+            <h2>Login</h2>
+            <p class="sign-in">Sign in with your username and password</p>
+          </div>
+          <div class="main-container">
+            <label for="username">Your Username</label>
+            <input
+              type="text"
+              placeholder="Enter Username"
+              name="username"
+              required
+            />
+            <br /><br />
+            <label for="password">Your Password</label>
+            <input
+              type="text"
+              placeholder="Enter Password"
+              name="password"
+              required
+            />
+            <br />
+            <br />
+            <button id="login-button" type="submit" aria-label="Login">
+              Login
+            </button>
+          </div>
+        </form>
+      </section>
+      <section class="main-page-view-top-bar-left">
+        <p class="hello">Hello, User</p>
+      <section class="main-page-view-top-bar-right">
+        <p class="overlook-logo">Overlook</p>
+      </section>
+      </section>
+      <section class="main-page-view button-nav">
+        <button id="past-bookings-button" tabindex="0">Past Bookings</button>
+        <button id="upcoming-bookings-button" tabindex="0">
+          Upcoming Bookings
+        </button>
+      </section>
+      <section class="list-room-cards-view">
+        <!-- /* Room Cards Appear here */ -->
+      </section>
+      <section class="main-page-view-footer-bar">
+        <button id="new-booking" tabindex="0">New Booking</button>
+        <p class="total-spent">Total Spent:</p>
+      </section>
+      <section class="new-bookings-view"></section>
+    </main>
+    <script src="bundle.js"></script>
+  </body>
 </html>
