@@ -8,11 +8,12 @@
       href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap"
       rel="stylesheet"
     />
+    <link href="https://fonts.googleapis.com/css2?family=Fuggles&display=swap" rel="stylesheet"/>
     <title>Overlook:A booking Website</title>
   </head>
   <body>
     <main>
-      <h1>Overlook: A Hotel Booking Website</h1>
+      <h1 class="title" hidden>Overlook: A Hotel Booking Website</h1>
       <section class="form" hidden>
         <form action="" id="login-form" hidden>
           <div class="headings-container">
@@ -44,23 +45,32 @@
         </form>
       </section>
       <section class="main-page-view-top-bar-left">
-        <p class="hello">Hello, User</p>
-      <section class="main-page-view-top-bar-right">
         <p class="overlook-logo">Overlook</p>
+        <p class="hello">Hello, User</p>
       </section>
       </section>
-      <section class="main-page-view button-nav">
-        <button id="past-bookings-button" tabindex="0">Past Bookings</button>
-        <button id="upcoming-bookings-button" tabindex="0">
-          Upcoming Bookings
-        </button>
+      <section class="main-page-view">
+        <section id="past-bookings-section">
+          <p>Past Bookings</p>
+          <section class="past-booking-cards">
+            <!-- Past Bookings Cards Appear Here -->
+          </section>
+        </section>
+        <section id="upcoming-bookings-section">
+          <p>Upcoming Bookings</p>
+          <section class="upcoming-bookings-cards">
+            <!-- Upcoming bookings cards appear here -->
+          </section>
+        </section>
       </section>
-      <section class="list-room-cards-view">
-        <!-- /* Room Cards Appear here */ -->
-      </section>
-      <section class="main-page-view-footer-bar">
-        <button id="new-booking" tabindex="0">New Booking</button>
-        <p class="total-spent">Total Spent:</p>
+      <section class="search-section">
+        <section class="new-booking-area">
+          <p class="new-booking">Book Now!</p>
+          <!-- html for calender/filtered room search -->
+        <section>
+          <p class="total-spent"></p> <!-- Total customer has spent will go here-->
+        </section>
+        </section>
       </section>
       <section class="new-bookings-view"></section>
     </main>
