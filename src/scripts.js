@@ -14,5 +14,3 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log(data)
     })
   })
-
-console.log('This is the JavaScript entry file - your code begins here.');
