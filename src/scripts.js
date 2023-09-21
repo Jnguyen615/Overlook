@@ -1,5 +1,6 @@
 import './css/styles.css';
 import { promises } from './api-calls'
+import flatpickr from "flatpickr";
 
 document.addEventListener("DOMContentLoaded", function () {
   let data;
