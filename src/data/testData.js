@@ -1,4 +1,4 @@
-const booking = [ 
+const bookings = [ 
   {
     id: '1', 
     userID: 9, 
@@ -24,14 +24,20 @@ const booking = [
     roomNumber: 7
   },
   {
-    id: '5fwrgu4i7k55hl6t8', 
+    id: '5', 
     userID: 1, 
     date: '2022/02/05', 
     roomNumber: 12
+  },
+  {
+    id: '6',
+    userID: 13,
+    date: '2022/02/19',
+    roomNumber: 1
   }
 ]
 
-const customers = [
+ const customers = [
   {
     id: 1,
     name: 'Leatha Ullrich'
@@ -89,6 +95,18 @@ const rooms = [
     bedSize: 'queen',
     numBeds: 1,
     costPerNight: 429.44
+  },
+  {
+    number: 12,
+    roomType: 'single room',
+    bidet: false,
+    bedSize: 'twin',
+    costPerNight: 172.09
   }
 ]
 
+module.exports = {
+  bookings, 
+  customers,
+  rooms
+}
