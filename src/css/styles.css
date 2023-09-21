@@ -24,7 +24,7 @@ h1 {
 
 h2 {
   text-align: center;
-  color: lightsteelblue
+  color: white
 }
 
 .sign-in {
@@ -33,17 +33,18 @@ h2 {
 
 .form {
   text-align: center;
-  width: 30vw;
+  /* width: 30vw;
   height: 26vh;
-  box-shadow: inset 5px 5px 10px hsl(174.4deg 72.33% 63.36%), inset -5px -5px 10px #009688;
+  box-shadow: inset 5px 5px 10px hsl(174.4deg 72.33% 63.36%), inset -5px -5px 10px #009688; */
 }
 
-.main-page-view-top-bar-left {
-  width: 97vw;
+.main-page-view-top-bar {
+  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-direction: row-reverse;
+  display: none;
 }
 
 .main-page-view {
