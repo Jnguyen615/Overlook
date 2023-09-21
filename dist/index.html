@@ -9,6 +9,8 @@
       rel="stylesheet"
     />
     <link href="https://fonts.googleapis.com/css2?family=Fuggles&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
     <title>Overlook:A booking Website</title>
   </head>
   <body>
@@ -73,7 +75,16 @@
         </section>
       </section>
       <section class="new-bookings-view"></section>
+        <form>
+          <input class="date-calendar" type="date">
+        </form>
     </main>
     <script src="bundle.js"></script>
+    <!-- flatpickr -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+    flatpickr("input[type=date]")
+    </script> 
+
   </body>
 </html>
