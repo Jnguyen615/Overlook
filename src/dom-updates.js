@@ -1,11 +1,11 @@
-const pastBookingsArea = document.querySelector('.past-booking-cards')
-const upcomingBookingsArea = document.querySelector('.upcoming-bookings-cards')
-const mainPageLogo = document.querySelector('.title')
-
+const pastBookingsArea = document.querySelector('.past-booking-cards');
+const upcomingBookingsArea = document.querySelector('.upcoming-bookings-cards');
+const mainPageLogo = document.querySelector('.title');
+import { data } from './data/testData';
 
 export function createRoomCard(room) {
   const card = document.createElement('div');
-  card.classList.add('room-card')
+  card.classList.add('room-card');
 
   const roomNumber = document.createElement('p');
   roomNumber.textContent = `Room ${room.number}`;
@@ -24,13 +24,12 @@ export function createRoomCard(room) {
   return card;
 }
 
-export function populateRoomCardSection(rooms, sectionId) {
-  const section = document.getElementById(sectionId);
+export function populateRoomCardSection() {
+  const section = document.querySelector('.past-booking-cards');
   if (section) {
-    rooms.forEach((room) => {
+    data.rooms.forEach(room => {
       const roomCard = createRoomCard(room);
       section.appendChild(roomCard);
     });
   }
 }
-
