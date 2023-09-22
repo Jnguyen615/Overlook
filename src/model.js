@@ -1,3 +1,5 @@
+import { data, bookings } from '../src/data/testData'
+
 export function getPastBookingsData (userId, data)  {
   const pastUserBookings = data.bookings.filter((booking) => {
     return booking.userID === userId

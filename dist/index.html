@@ -8,22 +8,16 @@
       href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap"
       rel="stylesheet"
     />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fuggles&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Fuggles&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
     <title>Overlook:A booking Website</title>
   </head>
   <body>
     <main>
-      <h1 class="title">Overlook: A Hotel Booking Website</h1>
-      <section class="form">
-        <form action="" id="login-form">
+      <h1 class="title" hidden>Overlook: A Hotel Booking Website</h1>
+      <section class="form" hidden>
+        <form action="" id="login-form" hidden>
           <div class="headings-container">
             <h2>Login</h2>
             <p class="sign-in">Sign in with your username and password</p>
@@ -52,47 +46,46 @@
           </div>
         </form>
       </section>
-      <section class="main-page-view-top-bar" hidden>
+      <section class="main-page-view-top-bar-left">
         <p class="overlook-logo">Overlook</p>
         <p class="hello">Hello, User</p>
       </section>
-      <section class="main-view" hidden>
-        <section class="main-page-view">
-          <section id="past-bookings-section">
-            <p>Past Bookings</p>
-            <section class="past-booking-cards">
-              <!-- Past Bookings Cards Appear Here -->
-            </section>
-          </section>
-          <section id="upcoming-bookings-section">
-            <p>Upcoming Bookings</p>
-            <section class="upcoming-bookings-cards">
-              <!-- Upcoming bookings cards appear here -->
-            </section>
+      </section>
+      <section class="main-page-view">
+        <section id="past-bookings-section">
+          <p>Past Bookings</p>
+          <section class="past-booking-cards">
+            <!-- Past Bookings Cards Appear Here -->
           </section>
         </section>
-        <section>
-          <button id="new-booking-button" type="submit" aria-label="New booking">
-            New Booking
-          </button>
-        </section>
-        <section class="search-view" hidden>
-          <form>
-            <input class="date-calendar" type="date" />
-          </form>
-          <!-- html for calender/filtered room search -->
-          <section>
-            <!-- Total customer has spent will go here-->
-            <p class="total-spent"></p>
+        <section id="upcoming-bookings-section">
+          <p>Upcoming Bookings</p>
+          <section class="upcoming-bookings-cards">
+            <!-- Upcoming bookings cards appear here -->
           </section>
         </section>
       </section>
+      <section class="search-section">
+        <section class="new-booking-area">
+          <p class="new-booking">Book Now!</p>
+          <!-- html for calender/filtered room search -->
+          <section>
+            <!-- Total customer has spent will go here-->
+            <p class="total-spent"></p> 
+          </section>
+        </section>
+      </section>
+      <section class="new-bookings-view"></section>
+        <form>
+          <input class="date-calendar" type="date">
+        </form>
     </main>
     <script src="bundle.js"></script>
     <!-- flatpickr -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
-      flatpickr('input[type=date]');
-    </script>
+    flatpickr("input[type=date]")
+    </script> 
+
   </body>
 </html>

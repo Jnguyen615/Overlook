@@ -1,36 +1,7 @@
-const pastBookingsArea = document.querySelector('.past-booking-cards')
-const upcomingBookingsArea = document.querySelector('.upcoming-bookings-cards')
-const mainPageLogo = document.querySelector('.title')
+const form = document.getElementById("login-form");
+const loginButton = document.getElementById("login-button");
 
-
-export function createRoomCard(room) {
-  const card = document.createElement('div');
-  card.classList.add('room-card')
-
-  const roomNumber = document.createElement('p');
-  roomNumber.textContent = `Room ${room.number}`;
-  card.appendChild(roomNumber);
-
-  const roomDetails = document.createElement('ul');
-  roomDetails.innerHTML = `
-    <li>Room Type: ${room.roomType}</li>
-    <li>Bidet: ${room.bidet ? 'Yes' : 'No'}</li>
-    <li>Bed Size: ${room.bedSize}</li>
-    <li>Number of Beds: ${room.numBeds}</li>
-    <li>Cost Per Night: $${room.costPerNight}</li>
-  `;
-  card.appendChild(roomDetails);
-
-  return card;
-}
-
-export function populateRoomCardSection(rooms, sectionId) {
-  const section = document.getElementById(sectionId);
-  if (section) {
-    rooms.forEach((room) => {
-      const roomCard = createRoomCard(room);
-      section.appendChild(roomCard);
-    });
-  }
-}
-
+loginButton.addEventListener("click", function () {
+  // Toggle the hidden attribute of the form
+  form.hidden = true
+});
