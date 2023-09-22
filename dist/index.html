@@ -26,23 +26,25 @@
         <form action="" id="login-form">
           <div class="headings-container">
             <h2>Login</h2>
-            <p class="sign-in">Sign in with your username and password</p>
+            <p class="sign-in-or-error-tag">
+              Sign in with your username and password
+            </p>
           </div>
           <div class="main-container">
             <label for="username">Your Username</label>
             <input
+              id="username"
               type="text"
               placeholder="Enter Username"
               name="username"
-              required
             />
             <br /><br />
             <label for="password">Your Password</label>
             <input
+              id="password"
               type="text"
               placeholder="Enter Password"
               name="password"
-              required
             />
             <br />
             <br />
@@ -54,7 +56,7 @@
       </section>
       <section class="main-page-view-top-bar" hidden>
         <p class="overlook-logo">Overlook</p>
-        <p class="hello">Hello, User</p>
+        <p class="hello"></p>
       </section>
       <section class="main-view" hidden>
         <section class="main-page-view">
@@ -72,7 +74,11 @@
           </section>
         </section>
         <section>
-          <button id="new-booking-button" type="submit" aria-label="New booking">
+          <button
+            id="new-booking-button"
+            type="submit"
+            aria-label="New booking"
+          >
             New Booking
           </button>
         </section>
@@ -88,11 +94,11 @@
         </section>
       </section>
     </main>
-    <script src="bundle.js"></script>
     <!-- flatpickr -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
       flatpickr('input[type=date]');
     </script>
+    <script src="bundle.js"></script>
   </body>
 </html>
