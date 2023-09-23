@@ -1,18 +1,20 @@
-import { getRoomsByUser } from './bookings';
+import { getRoomsByUser, getUserId } from './bookings';
 
 export function submitLogin(data, username, password) {
-  const ID = Number(username.slice(8));
+  
+  const ID = getUserId(username);
   const checkID = ID > 0 && username.startsWith('customer');
   const checkPassword = password === 'overlook2021';
-  if (checkID && checkPassword) {
-    const customerName = getCustomer(ID, data);
-    document.querySelector('.hello').textContent = `Welcome ${customerName}`;
-  } else {
-    handleLoginError
-  }
+
+  return checkID && checkPassword
+
 }
 
-function handleLoginError() {
+export function showCustomerName() {
+}
+
+
+export function handleLoginError() {
   const signInOrError = document.querySelector('.sign-in-or-error-tag');
   signInOrError.textContent = 'Incorrect Username or Password';
 }
