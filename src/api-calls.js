@@ -11,8 +11,4 @@ export const fetchData = (dataType) => {
   });
 };
 
-export const promises = [
-  fetchData('customers'),
-  fetchData('rooms'),
-  fetchData('bookings')
-]
+
