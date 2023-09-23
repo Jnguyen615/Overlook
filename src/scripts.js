@@ -1,8 +1,8 @@
 import './css/styles.css';
 import { fetchData } from './api-calls';
-import { submitLogin } from './customers';
+import { submitLogin, getCustomer } from './customers';
 import { populateRoomCardSection, createRoomCard } from './dom-updates';
-import { getUserId, getRoomNumber, getRoomsByUser } from './bookings';
+import { getUserId, getRoomNumbers, getRoomsByUser } from './bookings';
 import flatpickr from 'flatpickr';
 
 const form = document.getElementById('login-form');
@@ -42,19 +42,25 @@ passwordInput.addEventListener('input', checkInputs);
 
 loginButton.addEventListener('click', function (event) {
   event.preventDefault();
-  const signInOrError = document.querySelector('.sign-in-or-error-tag');
+  const signInOrError = document.querySelector('.sign-in-or-error-text');
 
   const username = usernameInput.value;
   const password = passwordInput.value;
+  const submitResponse = submitLogin(data, username, password)
+  if ( submitResponse === true ) {
+    form.hidden = true;
+    mainPageLogo.hidden = true;
+    mainPageView.hidden = false;
+    topBar.style.display = 'flex';
+    const userID = getUserId(username);
+    const customerName = getCustomer(userID, data);
+    const roomNumber = getRoomNumbers(userID, data);
+    document.querySelector('.hello').textContent = `Welcome ${customerName}`;
 
-  submitLogin(data, username, password, signInOrError);
-  form.hidden = true;
-  mainPageLogo.hidden = true;
-  mainPageView.hidden = false;
-  topBar.style.display = 'flex';
-  const userID = getUserId(username);
-  const roomNumber = getRoomNumber(userID, data);
-  getRoomsByUser(userID, data);
+    getRoomsByUser(userID, data);
+  } else {
+    signInOrError.textContent = 'Please check your username and password again'
+  }
 });
 
 newBookingButton.addEventListener('click', function () {
@@ -68,6 +74,7 @@ function checkInputs() {
     loginButton.setAttribute('disabled', 'true');
   }
 }
-form.addEventListener('submit', function (e) {
-  e.preventDefault();
-});
+// form.addEventListener('submit', function (e) {
+//   e.preventDefault();
+// }
+// );
