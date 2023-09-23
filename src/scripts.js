@@ -6,6 +6,8 @@ import { getUserId, getRoomNumber, getRoomsByUser } from './bookings';
 import flatpickr from 'flatpickr';
 
 const form = document.getElementById('login-form');
+const usernameInput = document.querySelector('#username');
+const passwordInput = document.querySelector('#password');
 const loginButton = document.getElementById('login-button');
 const mainPageLogo = document.querySelector('.title');
 const mainPageView = document.querySelector('.main-view');
@@ -35,10 +37,11 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+usernameInput.addEventListener('input', checkInputs);
+passwordInput.addEventListener('input', checkInputs);
+
 loginButton.addEventListener('click', function (event) {
   event.preventDefault();
-  const usernameInput = document.querySelector('#username');
-  const passwordInput = document.querySelector('#password');
   const signInOrError = document.querySelector('.sign-in-or-error-tag');
 
   const username = usernameInput.value;
@@ -56,4 +59,15 @@ loginButton.addEventListener('click', function (event) {
 
 newBookingButton.addEventListener('click', function () {
   mainPageView.hidden = true;
+});
+
+function checkInputs() {
+  if (usernameInput.value !== '' && passwordInput.value !== '') {
+    loginButton.removeAttribute('disabled');
+  } else {
+    loginButton.setAttribute('disabled', 'true');
+  }
+}
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
 });
