@@ -1,7 +1,7 @@
 import { getRoomsByUser, getUserId } from './bookings';
 
 export function submitLogin(username, password) {
-  
+  console.log("UN", username)
   const ID = getUserId(username);
   const checkID = ID > 0 && username.startsWith('customer');
   const checkPassword = password === 'overlook2021';
@@ -12,7 +12,6 @@ export function submitLogin(username, password) {
 
 export function showCustomerName() {
 }
-
 
 export function handleLoginError() {
   const signInOrError = document.querySelector('.sign-in-or-error-tag');

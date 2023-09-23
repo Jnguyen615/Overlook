@@ -1,6 +1,6 @@
 import './css/styles.css';
 import { fetchData } from './api-calls';
-import { submitLogin, getCustomer } from './customers';
+import { submitLogin, getCustomer } from './login';
 import { populateRoomCardSection, createRoomCard } from './dom-updates';
 import { getUserId, getRoomNumbers, getRoomsByUser } from './bookings';
 import flatpickr from 'flatpickr';
@@ -46,12 +46,13 @@ loginButton.addEventListener('click', function (event) {
 
   const username = usernameInput.value;
   const password = passwordInput.value;
-  const submitResponse = submitLogin(data, username, password)
-  if ( submitResponse === true ) {
+  const submitResponse = submitLogin(username, password)
+  if (submitResponse === true ) {
     form.hidden = true;
     mainPageLogo.hidden = true;
     mainPageView.hidden = false;
     topBar.style.display = 'flex';
+    console.log('UN', username)
     const userID = getUserId(username);
     const customerName = getCustomer(userID, data);
     const roomNumber = getRoomNumbers(userID, data);
@@ -74,7 +75,7 @@ function checkInputs() {
     loginButton.setAttribute('disabled', 'true');
   }
 }
-// form.addEventListener('submit', function (e) {
-//   e.preventDefault();
-// }
-// );
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+}
+);
