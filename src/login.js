@@ -1,7 +1,6 @@
-import { getRoomsByUser, getUserId } from './bookings';
+import { getBookingsByCustomer, getUserId } from './bookings';
 
-export function submitLogin(username, password) {
-  console.log("UN", username)
+export function checkUsernameAndPasswords(username, password) {
   const ID = getUserId(username);
   const checkID = ID > 0 && username.startsWith('customer');
   const checkPassword = password === 'overlook2021';
@@ -21,9 +20,10 @@ export function handleLoginError() {
 export function getCustomer(ID, data) {
   const customer = data.customers.find(customer => customer.id === ID);
   if (customer) {
-    getRoomsByUser(ID, data);
+    getBookingsByCustomer(ID, data);
     return customer.name;
   } else {
     return null;
   }
 }
+

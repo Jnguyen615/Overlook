@@ -8,7 +8,7 @@ export function getUserId(username) {
   return null;
 }
 
-export function getPastBookingsData(userId, data) {
+export function getCustomerBookingsData(userId, data) {
   const pastUserBookings = data.bookings.filter(booking => {
     return booking.userID === userId;
   });
@@ -22,11 +22,10 @@ export function getRoomNumbers(userId, data) {
   return userBookings.map(booking => booking.roomNumber);
 }
 
-export function getRoomsByUser(userId, data) {
+export function getBookingsByCustomer(userId, data) {
   const matchingBookings = data.bookings.filter(booking => {
     return booking.userID === userId;
   });
-  /////need to filter out past vs upcoming bookings /////
   if (matchingBookings) {
     const rooms = data.rooms.filter(room => {
       return room.number === matchingBookings.roomNumber;
@@ -49,3 +48,4 @@ export function calculateTotalRoomCost(userId, data) {
 
   return totalCost;
 }
+

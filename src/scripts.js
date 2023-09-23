@@ -1,8 +1,8 @@
 import './css/styles.css';
 import { fetchData } from './api-calls';
-import { submitLogin, getCustomer } from './login';
+import { checkUsernameAndPasswords, getCustomer } from './login';
 import { populateRoomCardSection, createRoomCard } from './dom-updates';
-import { getUserId, getRoomNumbers, getRoomsByUser } from './bookings';
+import { getUserId, getRoomNumbers, getBookingsByCustomer } from './bookings';
 import flatpickr from 'flatpickr';
 
 const form = document.getElementById('login-form');
@@ -13,7 +13,8 @@ const mainPageLogo = document.querySelector('.title');
 const mainPageView = document.querySelector('.main-view');
 const newBookingButton = document.querySelector('#new-booking-button');
 const topBar = document.querySelector('.main-page-view-top-bar');
-
+const bookingsArea = document.querySelector('.booking-section')
+const welcomeTitle = document.querySelector('.hello')
 let data;
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -46,19 +47,18 @@ loginButton.addEventListener('click', function (event) {
 
   const username = usernameInput.value;
   const password = passwordInput.value;
-  const submitResponse = submitLogin(username, password)
+  const submitResponse = checkUsernameAndPasswords(username, password)
   if (submitResponse === true ) {
     form.hidden = true;
     mainPageLogo.hidden = true;
     mainPageView.hidden = false;
     topBar.style.display = 'flex';
-    console.log('UN', username)
     const userID = getUserId(username);
     const customerName = getCustomer(userID, data);
-    const roomNumber = getRoomNumbers(userID, data);
-    document.querySelector('.hello').textContent = `Welcome ${customerName}`;
-
-    getRoomsByUser(userID, data);
+    if (bookingsArea) {
+      populateRoomCardSection(rooms, userID, data, bookingsArea )
+    }
+    welcomeTitle.textContent = `Welcome ${customerName}`;
   } else {
     signInOrError.textContent = 'Please check your username and password again'
   }

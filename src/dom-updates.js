@@ -1,7 +1,4 @@
-const pastBookingsArea = document.querySelector('.past-booking-cards')
-const upcomingBookingsArea = document.querySelector('.upcoming-bookings-cards')
-const mainPageLogo = document.querySelector('.title')
-import { data } from './data/testData'
+const bookingsArea = document.querySelector('.booking-section')
 
 export function createRoomCard(room) {
   const card = document.createElement('div')
@@ -23,12 +20,12 @@ export function createRoomCard(room) {
   return card;
 }
 
-export function populateRoomCardSection() {
+export function populateRoomCardSection(rooms, userID, data, pastBookingsArea) {
   if (pastBookingsArea) {
-    const customerBookings = getBookingsByID(customerID, data)
-    pastBookingsArea.innerHTML = ''
-    customerBookings.forEach(booking => {
-      const room = data.rooms.find(room => room.number === booking.roomNumber)
+    const customerBookings = getBookingsByCustomer(userID, data);
+    pastBookingsArea.innerHTML = '';
+    customerBookings.forEach((booking) => {
+      const room = rooms.find((room) => room.number === booking.roomNumber);
       if (room) {
         const roomCard = createRoomCard(room);
         pastBookingsArea.appendChild(roomCard);
@@ -37,12 +34,27 @@ export function populateRoomCardSection() {
   }
 }
 
-// export function populateRoomCardSection(rooms, sectionId) {
-//   const section = document.getElementById(sectionId);
-//   if (section) {
+// export function populateRoomCardSection(rooms) {
+//   if (pastBookingsArea) {
+//     const customerBookings = getBookingsByID(customerID, data)
+//     pastBookingsArea.innerHTML = ''
+//     customerBookings.forEach(booking => {
+//       const room = data.rooms.find(room => room.number === booking.roomNumber)
+//       if (room) {
+//         const roomCard = createRoomCard(room);
+//         pastBookingsArea.appendChild(roomCard);
+//       }
+//     });
+//   }
+// }
+
+// export function populateRoomCardSection(rooms, userId, data, bookingsArea) {
+//   console.log(userId)
+//   if (bookingsArea) {
 //     rooms.forEach((room) => {
+//       console.log(rooms)
 //       const roomCard = createRoomCard(room);
-//       section.appendChild(roomCard);
+//       bookingsArea.appendChild(roomCard);
 //     });
 //   }
 // }
