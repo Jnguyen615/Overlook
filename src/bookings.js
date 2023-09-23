@@ -15,7 +15,7 @@ export function getPastBookingsData(userId, data) {
   return pastUserBookings;
 }
 
-export function getRoomNumber(userId, data) {
+export function getRoomNumbers(userId, data) {
   const userBookings = data.bookings.filter(booking => {
     return booking.userID === userId;
   });
