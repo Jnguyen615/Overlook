@@ -16,7 +16,6 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
     />
-
     <title>Overlook:A booking Website</title>
   </head>
   <body>
@@ -28,9 +27,7 @@
         <form action="" id="login-form">
           <div class="login-container">
             <h2>Login</h2>
-            <p class="sign-in-or-error-text">
-              Sign in with your username and password
-            </p>
+            <p class="login-message">Sign in with your username and password</p>
           </div>
           <div class="main-container">
             <label for="username">Username</label>
@@ -64,9 +61,9 @@
           <p class="welcome-user"></p>
         </section>
         <h2 class="bookings-title">Your Past and Upcoming Bookings</h2>
-        <div id="bookings-section"></div>
-        <!-- Bookings cards appear here -->
-        <section class='bottom-bar'>
+        <section class="button-and-total-spent-container">
+          <!-- Total customer has spent will go here-->
+          <p class="total-spent"></p>
           <button
             id="new-booking-button"
             type="submit"
@@ -74,11 +71,9 @@
           >
             New Booking
           </button>
-          <section>
-            <!-- Total customer has spent will go here-->
-            <p class="total-spent"></p>
-          </section>
         </section>
+        <div id="bookings-section"></div>
+        <!-- Bookings cards appear here -->
         <section class="search-view" hidden>
           <form>
             <input class="date-calendar" type="date" />
