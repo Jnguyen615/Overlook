@@ -5,6 +5,7 @@ import { populateRoomCardSection, handleLoginError, displayTotalSpent } from './
 import { getUserId } from './bookings';
 import flatpickr from 'flatpickr';
 
+
 const form = document.getElementById('login-form');
 const usernameInput = document.querySelector('#username');
 const passwordInput = document.querySelector('#password');
@@ -14,7 +15,7 @@ const mainPageView = document.querySelector('.main-view');
 const newBookingButton = document.querySelector('#new-booking-button');
 const topBar = document.querySelector('.main-page-view-top-bar');
 const bookingsArea = document.querySelector('#bookings-section');
-const welcomeTitle = document.querySelector('.hello');
+const welcomeTitle = document.querySelector('.welcome-user');
 
 let data;
 
