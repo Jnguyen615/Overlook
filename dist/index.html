@@ -16,12 +16,11 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
     />
-
     <title>Overlook:A booking Website</title>
   </head>
   <body>
     <main>
-      <h1 class="title">Overlook: A Hotel Booking Website</h1>
+      <h1 class="title">Overlook Hotel: Where you book your view of the sky!</h1>
       <section class="form">
         <form action="" id="login-form">
           <div class="headings-container">
@@ -43,7 +42,7 @@
             <label for="password">Your Password</label>
             <input
               id="password"
-              type="text"
+              type="password"
               placeholder="Enter Password"
               name="password"
               required
@@ -61,20 +60,9 @@
         <p class="hello"></p>
       </section>
       <section class="main-view" hidden>
-        <section class="main-page-view">
-          <section id="past-bookings-section">
-            <p>Past Bookings</p>
-            <section class="past-booking-cards">
-              <!-- Past Bookings Cards Appear Here -->
-            </section>
-          </section>
-          <section id="upcoming-bookings-section">
-            <p>Upcoming Bookings</p>
-            <section class="upcoming-bookings-cards">
-              <!-- Upcoming bookings cards appear here -->
-            </section>
-          </section>
-        </section>
+        <div id="bookings-section"></div>
+        <h2 class="bookings-title">Your Past and Upcoming Bookings</h2>
+        <!-- Bookings cards appear here -->
         <section>
           <button
             id="new-booking-button"
@@ -83,16 +71,16 @@
           >
             New Booking
           </button>
+          <section>
+            <!-- Total customer has spent will go here-->
+            <p class="total-spent"></p>
+          </section>
         </section>
         <section class="search-view" hidden>
           <form>
             <input class="date-calendar" type="date" />
           </form>
           <!-- html for calender/filtered room search -->
-          <section>
-            <!-- Total customer has spent will go here-->
-            <p class="total-spent"></p>
-          </section>
         </section>
       </section>
     </main>
@@ -104,3 +92,5 @@
     <script src="bundle.js"></script>
   </body>
 </html>
+
+

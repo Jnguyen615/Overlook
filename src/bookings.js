@@ -1,18 +1,11 @@
 export function getUserId(username) {
   if (username.startsWith('customer')) {
-    const numericPart = username.slice(8);
-    if (!isNaN(numericPart)) {
-      return parseInt(numericPart, 10);
+    const extractedId = username.slice(8);
+    if (!isNaN(extractedId)) {
+      return parseInt(extractedId, 10);
     }
   }
   return null;
-}
-
-export function getPastBookingsData(userId, data) {
-  const pastUserBookings = data.bookings.filter(booking => {
-    return booking.userID === userId;
-  });
-  return pastUserBookings;
 }
 
 export function getRoomNumbers(userId, data) {
@@ -22,17 +15,11 @@ export function getRoomNumbers(userId, data) {
   return userBookings.map(booking => booking.roomNumber);
 }
 
-export function getRoomsByUser(userId, data) {
+export function getBookingsByCustomer(userId, data) {
   const matchingBookings = data.bookings.filter(booking => {
     return booking.userID === userId;
   });
-  /////need to filter out past vs upcoming bookings /////
-  if (matchingBookings) {
-    const rooms = data.rooms.filter(room => {
-      return room.number === matchingBookings.roomNumber;
-    });
-    return rooms || null;
-  }
+ return matchingBookings
 }
 
 export function calculateTotalRoomCost(userId, data) {
@@ -46,6 +33,5 @@ export function calculateTotalRoomCost(userId, data) {
     }
     return totalCost;
   }, 0);
-
   return totalCost;
 }

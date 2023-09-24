@@ -1,18 +1,12 @@
-import { getRoomsByUser, getUserId } from './bookings';
+import { getBookingsByCustomer, getUserId } from './bookings';
 
-export function submitLogin(data, username, password) {
-  
+export function checkUsernameAndPassword(username, password) {
   const ID = getUserId(username);
   const checkID = ID > 0 && username.startsWith('customer');
   const checkPassword = password === 'overlook2021';
 
-  return checkID && checkPassword
-
+  return checkID && checkPassword;
 }
-
-export function showCustomerName() {
-}
-
 
 export function handleLoginError() {
   const signInOrError = document.querySelector('.sign-in-or-error-tag');
@@ -22,7 +16,7 @@ export function handleLoginError() {
 export function getCustomer(ID, data) {
   const customer = data.customers.find(customer => customer.id === ID);
   if (customer) {
-    getRoomsByUser(ID, data);
+    getBookingsByCustomer(ID, data);
     return customer.name;
   } else {
     return null;
