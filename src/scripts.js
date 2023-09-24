@@ -1,7 +1,7 @@
 import './css/styles.css';
 import { fetchData } from './api-calls';
-import { checkUsernameAndPasswords, getCustomer } from './login';
-import { populateRoomCardSection, handleLoginError } from './dom-updates';
+import { checkUsernameAndPassword, getCustomer } from './login';
+import { populateRoomCardSection, handleLoginError, displayTotalSpent } from './dom-updates';
 import { getUserId } from './bookings';
 import flatpickr from 'flatpickr';
 
@@ -47,7 +47,7 @@ loginButton.addEventListener('click', function (event) {
 
   const username = usernameInput.value.trim();
   const password = passwordInput.value.trim();
-  const submitResponse = checkUsernameAndPasswords(username, password);
+  const submitResponse = checkUsernameAndPassword(username, password);
   if (submitResponse === true) {
     form.hidden = true;
     mainPageLogo.hidden = true;
@@ -57,6 +57,7 @@ loginButton.addEventListener('click', function (event) {
     const customerName = getCustomer(userID, data);
     if (bookingsArea) {
       populateRoomCardSection(data.rooms, userID, data, bookingsArea);
+      displayTotalSpent(userID, data)
     }
     welcomeTitle.textContent = `Welcome ${customerName}`;
   } else {
