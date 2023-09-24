@@ -19,6 +19,7 @@
     <title>Overlook:A booking Website</title>
   </head>
   <body>
+    <img src="./images/main-view-background.png">
     <main>
       <h1 class="title">
         Overlook Hotel: Where you book your view of the sky!
@@ -56,7 +57,7 @@
         </form>
       </section>
       <section class="main-view" hidden>
-        <section class="main-page-view-top-bar">
+        <section class="main-page-view-top-bar" hidden>
           <p class="overlook-logo">Overlook</p>
           <p class="welcome-user"></p>
         </section>
@@ -65,7 +66,10 @@
           <!-- Total customer has spent will go here-->
           <p class="total-spent"></p>
           <form id="calendar-form">
-            <input class="date-calendar" type="date" />
+            <input class="date-calendar"
+            type="date" 
+            required
+            />
             <button
               id="new-booking-button"
               type="submit"
@@ -78,6 +82,7 @@
         <div id="bookings-section"></div>
         <!-- Bookings cards appear here -->
         <section class="search-view" hidden>
+          <p class="available-rooms">Available Rooms</p>
           <!-- html for calendar/filtered room search -->
         </section>
       </section>
