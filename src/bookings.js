@@ -19,7 +19,7 @@ export function getBookingsByCustomer(userId, data) {
   const matchingBookings = data.bookings.filter(booking => {
     return booking.userID === userId;
   });
-  return matchingBookings;
+ return matchingBookings
 }
 
 export function calculateTotalRoomCost(userId, data) {
