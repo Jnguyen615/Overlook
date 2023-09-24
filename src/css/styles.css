@@ -10,7 +10,6 @@ main {
 
 body {
   background-image: url('https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80');
-  background-size: stretch;
   background-repeat: no-repeat;
   background-position: center center;
 }
@@ -26,7 +25,6 @@ h2 {
   text-align: center;
   color: azure;
   margin-bottom: 3%;
-  
 }
 
 .login-container {
@@ -40,34 +38,34 @@ h2 {
 }
 
 label {
-  color: azure
+  color: azure;
 }
 
-.sign-in-or-error-text {
+.login-message {
   color: rgb(238, 244, 250);
 }
 
 form {
   text-align: center;
   width: 35vw;
-  height: 28vh;
-  box-shadow: inset 5px 5px 10px hsl(196, 31%, 93%), inset -5px -5px 10px #b5dee8;
+  height: 33vh;
+  box-shadow: inset 5px 5px 10px hsl(196, 31%, 93%),
+    inset -5px -5px 10px #b5dee8;
 }
 
-#login-button  {
+#login-button {
   cursor: pointer;
   background-color: ghostwhite;
   border-radius: 50%;
   font-size: 18px;
 }
 
-
 .main-page-view-top-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-direction: row-reverse;
-  margin-bottom: -3%
+  margin-bottom: -3%;
 }
 
 .main-page-view {
@@ -80,7 +78,7 @@ form {
   color: aliceblue;
   font-size: 50px;
   font-family: 'Fuggles', cursive;
-  padding-left: 2%
+  padding-left: 2%;
 }
 
 .overlook-logo {
@@ -91,10 +89,17 @@ form {
   color: aliceblue;
 }
 
+.button-and-total-spent-container {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+}
+
 #bookings-section {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 10px
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
 }
 
 .room-card {
@@ -111,7 +116,12 @@ form {
 
 ul {
   list-style-type: none;
-  padding: 0;
+  padding: 6%;
+  font-size: 14px;
+}
+
+tr {
+  text-align: initial;
   font-size: 14px;
 }
 
@@ -124,7 +134,7 @@ ul {
 #new-booking-button {
   cursor: pointer;
   background-color: ghostwhite;
-  border-radius: 15%;
+  border-radius: 43%;
   font-size: 17px;
   height: 37px;
 }
