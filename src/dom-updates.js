@@ -1,28 +1,47 @@
 import { getBookingsByCustomer, calculateTotalRoomCost } from './bookings';
 
-export function handleLoginError() {
-  const signInOrError = document.querySelector('.sign-in-or-error-text');
-  signInOrError.textContent = 'Please check your username and password again';
+export function handleLoginError(loginMessage) {
+  loginMessage.textContent = 'Please check your username and password again';
 }
 
 export function createRoomCard(room, booking) {
-  console.log('booking', booking)
   const card = document.createElement('div');
   card.classList.add('room-card');
 
-  const roomNumber = document.createElement('p');
-  roomNumber.textContent = `Room ${room.number}`;
-  card.appendChild(roomNumber);
+  const bookingDate = document.createElement('p');
+  bookingDate.classList.add('date-of-stay');
+  bookingDate.textContent = `Date:  ${booking.date}`;
+  card.appendChild(bookingDate);
 
   const roomDetails = document.createElement('ul');
   roomDetails.innerHTML = `
-    <li>Date: ${booking.date}</li>
-    <li>Room Type: ${room.roomType}</li>
-    <li>Bidet: ${room.bidet ? 'Yes' : 'No'}</li>
-    <li>Bed Size: ${room.bedSize}</li>
-    <li>Number of Beds: ${room.numBeds}</li>
-    <li>Cost Per Night: $${room.costPerNight}</li>
-  `;
+  <table>
+  <tr>
+    <td>Room Number:</td>
+    <td>${room.number}</td>
+  </tr>
+  <tr>
+    <td>Room Type:</td>
+    <td>${room.roomType}</td>
+  </tr>
+  <tr>
+    <td>Bidet:</td>
+    <td>${room.bidet ? 'Yes' : 'No'}</td>
+  </tr>
+  <tr>
+    <td>Bed Size:</td>
+    <td>${room.bedSize}</td>
+  </tr>
+  <tr>
+    <td>Number of Beds:</td>
+    <td>${room.numBeds}</td>
+  </tr>
+  <tr>
+    <td>Cost Per Night:</td>
+    <td>$${room.costPerNight}</td>
+  </tr>
+</table>
+`;
   card.appendChild(roomDetails);
   return card;
 }
@@ -49,4 +68,3 @@ export function displayTotalSpent(userId, data) {
     totalSpent.textContent = `Total Spent: $${totalCost.toFixed(2)}`;
   }
 }
-

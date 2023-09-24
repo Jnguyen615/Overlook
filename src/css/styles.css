@@ -10,7 +10,6 @@ main {
 
 body {
   background-image: url('https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80');
-  background-size: stretch;
   background-repeat: no-repeat;
   background-position: center center;
 }
@@ -18,33 +17,55 @@ body {
 h1 {
   text-align: center;
   color: aliceblue;
-  font-size: xxx-large;
+  font-size: 50px;
   font-family: 'Fuggles', cursive;
 }
 
 h2 {
   text-align: center;
-  color: white
+  color: azure;
+  margin-bottom: 3%;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
 }
 
 .sign-in {
   text-align: center;
+  color: azure;
 }
 
-.form {
+label {
+  color: azure;
+}
+
+.login-message {
+  color: rgb(238, 244, 250);
+}
+
+.login-form {
   text-align: center;
-  /* width: 30vw;
-  height: 26vh;
-  box-shadow: inset 5px 5px 10px hsl(174.4deg 72.33% 63.36%), inset -5px -5px 10px #009688; */
+  width: 35vw;
+  height: 33vh;
+  box-shadow: inset 5px 5px 10px hsl(196, 31%, 93%),
+    inset -5px -5px 10px #b5dee8;
+}
+
+#login-button {
+  cursor: pointer;
+  background-color: ghostwhite;
+  border-radius: 50%;
+  font-size: 18px;
 }
 
 .main-page-view-top-bar {
-  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-direction: row-reverse;
-  display: none;
+  margin-bottom: -3%;
 }
 
 .main-page-view {
@@ -53,10 +74,78 @@ h2 {
   justify-content: space-around;
 }
 
+.welcome-user {
+  color: aliceblue;
+  font-size: 50px;
+  font-family: 'Fuggles', cursive;
+}
+
 .overlook-logo {
   font-family: 'Fuggles', cursive;
-  font-size: 45px;
+  font-size: 50px;
   font-weight: bolder;
+  color: aliceblue;
+}
+
+.button-and-total-spent-container {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 44%;
+
+}
+
+#bookings-section {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.room-card {
+  box-shadow: inset 5px 5px 10px #cce3f3, inset -4px -4px 5px #65768f;
+  border-radius: 3%;
+  border-radius: 3%;
+  text-align: center;
+  color: azure;
+}
+
+.date-of-stay {
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+  padding: 6%;
+  font-size: 14px;
+}
+
+tr {
+  text-align: initial;
+  font-size: 14px;
+}
+
+.bottom-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#new-booking-button {
+  cursor: pointer;
+  background-color: ghostwhite;
+  border-radius: 9%;
+  font-size: 13px;
+  height: 25px;
+}
+
+#calendar-form {
+ height: 15px;
+}
+
+.total-spent {
+  color: aliceblue;
+  font-size: 22px;
 }
 
 .display {

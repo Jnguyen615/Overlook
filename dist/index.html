@@ -19,18 +19,19 @@
     <title>Overlook:A booking Website</title>
   </head>
   <body>
+    <img src="./images/main-view-background.png">
     <main>
-      <h1 class="title">Overlook Hotel: Where you book your view of the sky!</h1>
+      <h1 class="title">
+        Overlook Hotel: Where you book your view of the sky!
+      </h1>
       <section class="form">
         <form action="" id="login-form">
-          <div class="headings-container">
+          <div class="login-container">
             <h2>Login</h2>
-            <p class="sign-in-or-error-text">
-              Sign in with your username and password
-            </p>
+            <p class="login-message">Sign in with your username and password</p>
           </div>
           <div class="main-container">
-            <label for="username">Your Username</label>
+            <label for="username">Username</label>
             <input
               id="username"
               type="text"
@@ -39,7 +40,7 @@
               required
             />
             <br /><br />
-            <label for="password">Your Password</label>
+            <label for="password">Password</label>
             <input
               id="password"
               type="password"
@@ -55,42 +56,42 @@
           </div>
         </form>
       </section>
-      <section class="main-page-view-top-bar" hidden>
-        <p class="overlook-logo">Overlook</p>
-        <p class="hello"></p>
-      </section>
       <section class="main-view" hidden>
-        <div id="bookings-section"></div>
-        <h2 class="bookings-title">Your Past and Upcoming Bookings</h2>
-        <!-- Bookings cards appear here -->
-        <section>
-          <button
-            id="new-booking-button"
-            type="submit"
-            aria-label="New booking"
-          >
-            New Booking
-          </button>
-          <section>
-            <!-- Total customer has spent will go here-->
-            <p class="total-spent"></p>
-          </section>
+        <section class="main-page-view-top-bar" hidden>
+          <p class="overlook-logo">Overlook</p>
+          <p class="welcome-user"></p>
         </section>
-        <section class="search-view" hidden>
-          <form>
-            <input class="date-calendar" type="date" />
+        <h2 class="bookings-title">Your Past and Upcoming Bookings</h2>
+        <section class="button-and-total-spent-container">
+          <!-- Total customer has spent will go here-->
+          <p class="total-spent"></p>
+          <form id="calendar-form">
+            <input class="date-calendar"
+            type="date" 
+            required
+            />
+            <button
+              id="new-booking-button"
+              type="submit"
+              aria-label="New booking"
+            >
+              New Booking
+            </button>
           </form>
-          <!-- html for calender/filtered room search -->
+        </section>
+        <div id="bookings-section"></div>
+        <!-- Bookings cards appear here -->
+        <section class="search-view" hidden>
+          <p class="available-rooms">Available Rooms</p>
+          <!-- html for calendar/filtered room search -->
         </section>
       </section>
     </main>
     <!-- flatpickr -->
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
       flatpickr('input[type=date]');
-    </script>
+    </script> -->
     <script src="bundle.js"></script>
   </body>
 </html>
-
-

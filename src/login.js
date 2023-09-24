@@ -8,11 +8,6 @@ export function checkUsernameAndPassword(username, password) {
   return checkID && checkPassword;
 }
 
-export function handleLoginError() {
-  const signInOrError = document.querySelector('.sign-in-or-error-tag');
-  signInOrError.textContent = 'Incorrect Username or Password';
-}
-
 export function getCustomer(ID, data) {
   const customer = data.customers.find(customer => customer.id === ID);
   if (customer) {
