@@ -45,7 +45,7 @@ label {
   color: rgb(238, 244, 250);
 }
 
-form {
+.login-form {
   text-align: center;
   width: 35vw;
   height: 33vh;
@@ -78,14 +78,12 @@ form {
   color: aliceblue;
   font-size: 50px;
   font-family: 'Fuggles', cursive;
-  padding-left: 2%;
 }
 
 .overlook-logo {
   font-family: 'Fuggles', cursive;
   font-size: 50px;
   font-weight: bolder;
-  padding-right: 2%;
   color: aliceblue;
 }
 
@@ -94,6 +92,8 @@ form {
   flex-direction: row-reverse;
   justify-content: space-between;
   align-items: center;
+  margin-right: 44%;
+
 }
 
 #bookings-section {
@@ -134,9 +134,13 @@ tr {
 #new-booking-button {
   cursor: pointer;
   background-color: ghostwhite;
-  border-radius: 43%;
-  font-size: 17px;
-  height: 37px;
+  border-radius: 9%;
+  font-size: 13px;
+  height: 25px;
+}
+
+#calendar-form {
+ height: 15px;
 }
 
 .total-spent {
