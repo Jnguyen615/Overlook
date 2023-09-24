@@ -16,21 +16,24 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
     />
+
     <title>Overlook:A booking Website</title>
   </head>
   <body>
     <main>
-      <h1 class="title">Overlook Hotel: Where you book your view of the sky!</h1>
+      <h1 class="title">
+        Overlook Hotel: Where you book your view of the sky!
+      </h1>
       <section class="form">
         <form action="" id="login-form">
-          <div class="headings-container">
+          <div class="login-container">
             <h2>Login</h2>
             <p class="sign-in-or-error-text">
               Sign in with your username and password
             </p>
           </div>
           <div class="main-container">
-            <label for="username">Your Username</label>
+            <label for="username">Username</label>
             <input
               id="username"
               type="text"
@@ -39,7 +42,7 @@
               required
             />
             <br /><br />
-            <label for="password">Your Password</label>
+            <label for="password">Password</label>
             <input
               id="password"
               type="password"
@@ -55,15 +58,15 @@
           </div>
         </form>
       </section>
-      <section class="main-page-view-top-bar" hidden>
-        <p class="overlook-logo">Overlook</p>
-        <p class="hello"></p>
-      </section>
       <section class="main-view" hidden>
-        <div id="bookings-section"></div>
+        <section class="main-page-view-top-bar">
+          <p class="overlook-logo">Overlook</p>
+          <p class="welcome-user"></p>
+        </section>
         <h2 class="bookings-title">Your Past and Upcoming Bookings</h2>
+        <div id="bookings-section"></div>
         <!-- Bookings cards appear here -->
-        <section>
+        <section class='bottom-bar'>
           <button
             id="new-booking-button"
             type="submit"
@@ -92,5 +95,3 @@
     <script src="bundle.js"></script>
   </body>
 </html>
-
-
