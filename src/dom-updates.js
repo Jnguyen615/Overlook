@@ -10,13 +10,14 @@ export function createRoomCard(room, booking) {
   const card = document.createElement('div');
   card.classList.add('room-card');
 
-  const roomNumber = document.createElement('p');
-  roomNumber.textContent = `Room ${room.number}`;
-  card.appendChild(roomNumber);
+  const bookingDate = document.createElement('p');
+  bookingDate.classList.add('date-of-stay')
+  bookingDate.textContent = `Date:  ${booking.date}`;
+  card.appendChild(bookingDate);
 
   const roomDetails = document.createElement('ul');
   roomDetails.innerHTML = `
-    <li>Date: ${booking.date}</li>
+    <li>Room Number: ${room.number}</li>
     <li>Room Type: ${room.roomType}</li>
     <li>Bidet: ${room.bidet ? 'Yes' : 'No'}</li>
     <li>Bed Size: ${room.bedSize}</li>
