@@ -1,12 +1,12 @@
 const expect = chai.expect;
 import chai from 'chai';
 import { data } from '../src/data/testData';
-import { getPastBookingsData, calculateTotalRoomCost } from '../src/bookings';
+import { getBookingsByCustomer, calculateTotalRoomCost } from '../src/bookings';
 
-describe('getPastBookingsData', function () {
+describe('getBookingsByCustomer', function () {
   it('should return the correct past bookings for a user with past bookings', function () {
     const userId = 13; // User ID with past bookings
-    const pastBookings = getPastBookingsData(userId, data);
+    const pastBookings = getBookingsByCustomer(userId, data);
     expect(pastBookings).to.deep.equal([
       {
         id: '3',
@@ -25,7 +25,7 @@ describe('getPastBookingsData', function () {
 
   it('should return an empty array for a user with no past bookings', function () {
     const userId = 99; // User ID with no past bookings
-    const pastBookings = getPastBookingsData(userId, data);
+    const pastBookings = getBookingsByCustomer(userId, data);
     expect(pastBookings).to.deep.equal([]);
   });
 });

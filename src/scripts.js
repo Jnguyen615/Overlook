@@ -1,8 +1,8 @@
 import './css/styles.css';
 import { fetchData } from './api-calls';
 import { checkUsernameAndPasswords, getCustomer } from './login';
-import { populateRoomCardSection, createRoomCard } from './dom-updates';
-import { getUserId, getRoomNumbers, getBookingsByCustomer } from './bookings';
+import { populateRoomCardSection, handleLoginError } from './dom-updates';
+import { getUserId } from './bookings';
 import flatpickr from 'flatpickr';
 
 const form = document.getElementById('login-form');
@@ -13,8 +13,9 @@ const mainPageLogo = document.querySelector('.title');
 const mainPageView = document.querySelector('.main-view');
 const newBookingButton = document.querySelector('#new-booking-button');
 const topBar = document.querySelector('.main-page-view-top-bar');
-const bookingsArea = document.querySelector('.booking-section')
-const welcomeTitle = document.querySelector('.hello')
+const bookingsArea = document.querySelector('#bookings-section');
+const welcomeTitle = document.querySelector('.hello');
+
 let data;
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -43,12 +44,11 @@ passwordInput.addEventListener('input', checkInputs);
 
 loginButton.addEventListener('click', function (event) {
   event.preventDefault();
-  const signInOrError = document.querySelector('.sign-in-or-error-text');
 
-  const username = usernameInput.value;
-  const password = passwordInput.value;
-  const submitResponse = checkUsernameAndPasswords(username, password)
-  if (submitResponse === true ) {
+  const username = usernameInput.value.trim();
+  const password = passwordInput.value.trim();
+  const submitResponse = checkUsernameAndPasswords(username, password);
+  if (submitResponse === true) {
     form.hidden = true;
     mainPageLogo.hidden = true;
     mainPageView.hidden = false;
@@ -56,11 +56,11 @@ loginButton.addEventListener('click', function (event) {
     const userID = getUserId(username);
     const customerName = getCustomer(userID, data);
     if (bookingsArea) {
-      populateRoomCardSection(rooms, userID, data, bookingsArea )
+      populateRoomCardSection(data.rooms, userID, data, bookingsArea);
     }
     welcomeTitle.textContent = `Welcome ${customerName}`;
   } else {
-    signInOrError.textContent = 'Please check your username and password again'
+    handleLoginError();
   }
 });
 
@@ -69,7 +69,9 @@ newBookingButton.addEventListener('click', function () {
 });
 
 function checkInputs() {
-  if (usernameInput.value !== '' && passwordInput.value !== '') {
+  const username = usernameInput.value.trim();
+  const password = passwordInput.value.trim();
+  if (username !== '' && password !== '') {
     loginButton.removeAttribute('disabled');
   } else {
     loginButton.setAttribute('disabled', 'true');
@@ -77,5 +79,4 @@ function checkInputs() {
 }
 form.addEventListener('submit', function (e) {
   e.preventDefault();
-}
-);
+});

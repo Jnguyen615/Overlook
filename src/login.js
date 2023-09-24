@@ -5,12 +5,10 @@ export function checkUsernameAndPasswords(username, password) {
   const checkID = ID > 0 && username.startsWith('customer');
   const checkPassword = password === 'overlook2021';
 
-  return checkID && checkPassword
-
+  return checkID && checkPassword;
 }
 
-export function showCustomerName() {
-}
+
 
 export function handleLoginError() {
   const signInOrError = document.querySelector('.sign-in-or-error-tag');
@@ -26,4 +24,3 @@ export function getCustomer(ID, data) {
     return null;
   }
 }
-
