@@ -18,33 +18,56 @@ body {
 h1 {
   text-align: center;
   color: aliceblue;
-  font-size: xxx-large;
+  font-size: 50px;
   font-family: 'Fuggles', cursive;
 }
 
 h2 {
   text-align: center;
-  color: white
+  color: azure;
+  margin-bottom: 3%;
+  
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
 }
 
 .sign-in {
   text-align: center;
+  color: azure;
 }
 
-.form {
-  text-align: center;
-  /* width: 30vw;
-  height: 26vh;
-  box-shadow: inset 5px 5px 10px hsl(174.4deg 72.33% 63.36%), inset -5px -5px 10px #009688; */
+label {
+  color: azure
 }
+
+.sign-in-or-error-text {
+  color: rgb(238, 244, 250);
+}
+
+form {
+  text-align: center;
+  width: 35vw;
+  height: 28vh;
+  box-shadow: inset 5px 5px 10px hsl(196, 31%, 93%), inset -5px -5px 10px #b5dee8;
+}
+
+#login-button  {
+  cursor: pointer;
+  background-color: ghostwhite;
+  border-radius: 50%;
+  font-size: 18px;
+}
+
 
 .main-page-view-top-bar {
-  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-direction: row-reverse;
-  display: none;
+  margin-bottom: -3%
 }
 
 .main-page-view {
@@ -53,10 +76,62 @@ h2 {
   justify-content: space-around;
 }
 
+.welcome-user {
+  color: aliceblue;
+  font-size: 50px;
+  font-family: 'Fuggles', cursive;
+  padding-left: 2%
+}
+
 .overlook-logo {
   font-family: 'Fuggles', cursive;
-  font-size: 45px;
+  font-size: 50px;
   font-weight: bolder;
+  padding-right: 2%;
+  color: aliceblue;
+}
+
+#bookings-section {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px
+}
+
+.room-card {
+  box-shadow: inset 5px 5px 10px #cce3f3, inset -4px -4px 5px #65768f;
+  border-radius: 3%;
+  border-radius: 3%;
+  text-align: center;
+  color: azure;
+}
+
+.date-of-stay {
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  font-size: 14px;
+}
+
+.bottom-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#new-booking-button {
+  cursor: pointer;
+  background-color: ghostwhite;
+  border-radius: 15%;
+  font-size: 17px;
+  height: 37px;
+}
+
+.total-spent {
+  color: aliceblue;
+  font-size: 22px;
 }
 
 .display {
