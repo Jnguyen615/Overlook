@@ -64,29 +64,29 @@
         <section class="button-and-total-spent-container">
           <!-- Total customer has spent will go here-->
           <p class="total-spent"></p>
-          <button
-            id="new-booking-button"
-            type="submit"
-            aria-label="New booking"
-          >
-            New Booking
-          </button>
+          <form id="calendar-form">
+            <input class="date-calendar" type="date" />
+            <button
+              id="new-booking-button"
+              type="submit"
+              aria-label="New booking"
+            >
+              New Booking
+            </button>
+          </form>
         </section>
         <div id="bookings-section"></div>
         <!-- Bookings cards appear here -->
         <section class="search-view" hidden>
-          <form>
-            <input class="date-calendar" type="date" />
-          </form>
-          <!-- html for calender/filtered room search -->
+          <!-- html for calendar/filtered room search -->
         </section>
       </section>
     </main>
     <!-- flatpickr -->
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
       flatpickr('input[type=date]');
-    </script>
+    </script> -->
     <script src="bundle.js"></script>
   </body>
 </html>
