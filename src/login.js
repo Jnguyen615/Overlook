@@ -1,14 +1,12 @@
 import { getBookingsByCustomer, getUserId } from './bookings';
 
-export function checkUsernameAndPasswords(username, password) {
+export function checkUsernameAndPassword(username, password) {
   const ID = getUserId(username);
   const checkID = ID > 0 && username.startsWith('customer');
   const checkPassword = password === 'overlook2021';
 
   return checkID && checkPassword;
 }
-
-
 
 export function handleLoginError() {
   const signInOrError = document.querySelector('.sign-in-or-error-tag');
