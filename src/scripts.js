@@ -6,8 +6,10 @@ import {
   handleLoginError,
   displayTotalSpent,
   displayAvailableRoomCards,
+  displayFilteredRoomsByType,
 } from './dom-updates';
-import { getUserId } from './bookings';
+import { getUserId, 
+  filterRoomsByType,  } from './bookings';
 import flatpickr from 'flatpickr';
 import './images/main-view-background.png';
 
@@ -27,9 +29,12 @@ const dateInput = document.querySelector('.date-calendar')
 const currentDate = new Date().toISOString().split('T')[0]
 const container = document.getElementById('available-rooms-section');
 const searchView = document.querySelector('.search-view');
+const dropDownMenu = document.getElementById('dropdown')
+const roomElements = document.querySelectorAll('.new-booking-room-card')
 
 
 let data; 
+let availableRoomNumbers;
 
 document.addEventListener('DOMContentLoaded', function () {
   const promises = [
@@ -55,9 +60,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 usernameInput.addEventListener('input', checkInputs);
 passwordInput.addEventListener('input', checkInputs);
-// calendarCells.forEach((cell) => {
-//   cell.addEventListener('click', handleDateSelection(bookings));
-// });
 
 
 loginButton.addEventListener('click', function (event) {
@@ -114,3 +116,12 @@ function checkInputs() {
   }
 }
 
+dropDownMenu.addEventListener('change', function(event) {
+  const selectedRoomType = event.target.value
+  console.log('selectedRoomType', selectedRoomType)
+  const availableRoomNumbers = getAvailabeRoomsByDate(data, searchForDate)
+
+  const filteredRoomNumbers = filterRoomsByType(availableRoomNumbers, selectedRoomType, data);
+  displayFilteredRoomsByType(filteredRoomNumbers)
+ 
+})
