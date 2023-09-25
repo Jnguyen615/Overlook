@@ -1,4 +1,4 @@
-import { getBookingsByCustomer, calculateTotalRoomCost } from './bookings';
+import { getBookingsByCustomer, calculateTotalRoomCost, getAvailableRoomsByDate } from './bookings';
 
 export function handleLoginError(loginMessage) {
   loginMessage.textContent = 'Please check your username and password again';
@@ -9,7 +9,7 @@ export function createRoomCard(room, booking) {
   card.classList.add('room-card');
 
   const bookingDate = document.createElement('p');
-  bookingDate.classList.add('date-of-stay');
+  bookingDate.classList.add('date-of-stay')
   bookingDate.textContent = `Date:  ${booking.date}`;
   card.appendChild(bookingDate);
 
@@ -67,4 +67,64 @@ export function displayTotalSpent(userId, data) {
     const totalCost = calculateTotalRoomCost(userId, data);
     totalSpent.textContent = `Total Spent: $${totalCost.toFixed(2)}`;
   }
+}
+
+
+export function displayAvailableRoomCards(data, searchForDate, container) {
+  const roomCards = generateRoomCards(data, searchForDate);
+  container.innerHTML = null;
+  roomCards.forEach((roomCard) => {
+    container.appendChild(roomCard);
+  });
+}
+
+export function createNewBookingRoomCard(room, booking) {
+  const card = document.createElement('div');
+  card.classList.add('new-booking-room-card');
+
+  const roomDetails = document.createElement('ul');
+  roomDetails.innerHTML = `
+  <table>
+  <tr>
+    <td>Room Number:</td>
+    <td>${room.number}</td>
+  </tr>
+  <tr>
+    <td>Room Type:</td>
+    <td>${room.roomType}</td>
+  </tr>
+  <tr>
+    <td>Bidet:</td>
+    <td>${room.bidet ? 'Yes' : 'No'}</td>
+  </tr>
+  <tr>
+    <td>Bed Size:</td>
+    <td>${room.bedSize}</td>
+  </tr>
+  <tr>
+    <td>Number of Beds:</td>
+    <td>${room.numBeds}</td>
+  </tr>
+  <tr>
+    <td>Cost Per Night:</td>
+    <td>$${room.costPerNight}</td>
+  </tr>
+</table>
+`;
+  card.appendChild(roomDetails);
+  return card;
+}
+
+export function generateRoomCards(data, searchForDate) {
+  const availableRoomNumbers = getAvailableRoomsByDate(data, searchForDate);
+  const roomCards = [];
+
+  availableRoomNumbers.forEach((roomNumber) => {
+    const room = data.rooms.find((room) => room.number === roomNumber);
+    const booking = data.bookings.find((booking) => booking.roomNumber === roomNumber);
+
+    const card = createNewBookingRoomCard(room, booking);
+    roomCards.push(card);
+  });
+  return roomCards;
 }
