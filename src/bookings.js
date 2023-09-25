@@ -72,6 +72,10 @@ export function getAvailableRoomsByDate(data, searchForDate) {
   return availableRoomNumbers;
 }
 
+export function filterRoomsByType () {
+  availableRoomNumbers.filter(room => room[e.target.value])
+}
+
 
 
 

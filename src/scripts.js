@@ -19,6 +19,7 @@ const mainPageLogo = document.querySelector('.title');
 const mainPageView = document.querySelector('.main-view');
 const newBookingButton = document.querySelector('#new-booking-button');
 const topBar = document.querySelector('.main-page-view-top-bar');
+const searchViewTopBar = document.querySelector('.search-view-top-bar');
 const bookingsArea = document.getElementById('bookings-section');
 const welcomeTitle = document.querySelector('.welcome-user');
 const body = document.body
@@ -86,13 +87,12 @@ loginButton.addEventListener('click', function (event) {
 newBookingButton.addEventListener('click', function (event) {
   event.preventDefault();
   mainPageView.hidden = true;
-  // bookingsArea.hidden = true;
+  searchViewTopBar.hidden = false;
+  searchView.hidden = false; 
   const searchForDate = document.getElementById('selected-date-input').value;
-  console.log('searchDate', searchForDate);
 
   if (searchForDate) {
      displayAvailableRoomCards(data, searchForDate, container)
-     //call my dom function here
   } else {
       console.log('Please select a date from the calendar.');
   }

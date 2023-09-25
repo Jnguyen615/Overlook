@@ -9,15 +9,15 @@ main {
 }
 
 body {
-  height: 100vh;
+  height: 300vh;
   background-repeat: no-repeat;
-  background-position: stretch;
+  background-size: cover;
 }
 
 h1 {
   text-align: center;
   color: aliceblue;
-  font-size: 50px;
+  font-size: 65px;
   font-family: 'Fuggles', cursive;
 }
 
@@ -25,6 +25,7 @@ h2 {
   text-align: center;
   color: azure;
   margin-bottom: 3%;
+  font-size:30px;
 }
 
 .login-container {
@@ -39,16 +40,18 @@ h2 {
 
 label {
   color: azure;
+  font-size: 18px;
 }
 
 .login-message {
   color: rgb(238, 244, 250);
+  font-size: 20px;
 }
 
-.login-form {
+#login-form {
   text-align: center;
   width: 35vw;
-  height: 33vh;
+  height: 36vh;
   box-shadow: inset 5px 5px 10px hsl(196, 31%, 93%),
     inset -5px -5px 10px #b5dee8;
 }
@@ -56,8 +59,8 @@ label {
 #login-button {
   cursor: pointer;
   background-color: ghostwhite;
-  border-radius: 50%;
-  font-size: 18px;
+  border-radius: 5%;
+  font-size: 20px;
 }
 
 .main-page-view-top-bar {
@@ -78,11 +81,12 @@ label {
   color: aliceblue;
   font-size: 50px;
   font-family: 'Fuggles', cursive;
+  font-weight: bolder;
 }
 
 .overlook-logo {
   font-family: 'Fuggles', cursive;
-  font-size: 50px;
+  font-size: 65px;
   font-weight: bolder;
   color: aliceblue;
 }
@@ -96,13 +100,13 @@ label {
 
 }
 
-#bookings-section {
+#bookings-section, #available-rooms-section {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 10px;
 }
 
-.room-card {
+.room-card, .new-booking-room-card {
   box-shadow: inset 5px 5px 10px #cce3f3, inset -4px -4px 5px #65768f;
   border-radius: 3%;
   border-radius: 3%;
@@ -115,9 +119,13 @@ label {
 }
 
 ul {
+  display: flex;
+  flex-direction: column;
   list-style-type: none;
   padding: 6%;
   font-size: 14px;
+  color: black;
+
 }
 
 tr {
@@ -146,6 +154,30 @@ tr {
 .total-spent {
   color: aliceblue;
   font-size: 22px;
+}
+
+.overlook-logo-search-view {
+  font-family: 'Fuggles', cursive;
+  font-size: 65px;
+  font-weight: bolder;
+  color: aliceblue;
+  text-align: right;
+  margin: 0;
+}
+
+.available-room-text {
+  color: azure;
+  text-align: center;
+  font-size: 23px;
+}
+
+#error-section {
+  text-align: center;
+  margin-bottom: 3%;
+}
+
+#book-button {
+  float:right
 }
 
 .display {

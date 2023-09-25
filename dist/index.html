@@ -84,13 +84,24 @@
         <div id="bookings-section"></div>
         <!-- Bookings cards appear here -->
       </section>
-      <section class="search-view">
+      <section class="search-view" hidden>
+        <section class="search-view-top-bar" hidden>
+          <p class="overlook-logo-search-view">Overlook</p>
+        </section>
         <section id="error-section">
+          <p class="available-room-text">Available Rooms</p>
+          <label for="dropdown">Filter By Room Type</label>
+          <select id="dropdown">
+            <option value="option1">Select an option</option>
+            <option value="option2">suite</option>
+            <option value="option3">residential suite</option>
+            <option value="option3">junior suite</option>
+            <option value="option3">single room </option>
+          </select>
         </section>
-        <p class="available-room-text" hidden >Available Rooms</p>
         <section id="available-rooms-section">
+          <!-- html for calendar/filtered room search -->
         </section>
-        <!-- html for calendar/filtered room search -->
       </section>
     </main>
     <!-- flatpickr -->

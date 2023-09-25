@@ -1,4 +1,8 @@
-import { getBookingsByCustomer, calculateTotalRoomCost, getAvailableRoomsByDate } from './bookings';
+import {
+  getBookingsByCustomer,
+  calculateTotalRoomCost,
+  getAvailableRoomsByDate,
+} from './bookings';
 
 export function handleLoginError(loginMessage) {
   loginMessage.textContent = 'Please check your username and password again';
@@ -9,7 +13,7 @@ export function createRoomCard(room, booking) {
   card.classList.add('room-card');
 
   const bookingDate = document.createElement('p');
-  bookingDate.classList.add('date-of-stay')
+  bookingDate.classList.add('date-of-stay');
   bookingDate.textContent = `Date:  ${booking.date}`;
   card.appendChild(bookingDate);
 
@@ -69,11 +73,10 @@ export function displayTotalSpent(userId, data) {
   }
 }
 
-
 export function displayAvailableRoomCards(data, searchForDate, container) {
   const roomCards = generateRoomCards(data, searchForDate);
   container.innerHTML = null;
-  roomCards.forEach((roomCard) => {
+  roomCards.forEach(roomCard => {
     container.appendChild(roomCard);
   });
 }
@@ -108,8 +111,11 @@ export function createNewBookingRoomCard(room, booking) {
   <tr>
     <td>Cost Per Night:</td>
     <td>$${room.costPerNight}</td>
+   
   </tr>
-</table>
+  </table>
+  <br></br>
+    <button id="book-button" type="button">Book!</button>
 `;
   card.appendChild(roomDetails);
   return card;
@@ -119,9 +125,11 @@ export function generateRoomCards(data, searchForDate) {
   const availableRoomNumbers = getAvailableRoomsByDate(data, searchForDate);
   const roomCards = [];
 
-  availableRoomNumbers.forEach((roomNumber) => {
-    const room = data.rooms.find((room) => room.number === roomNumber);
-    const booking = data.bookings.find((booking) => booking.roomNumber === roomNumber);
+  availableRoomNumbers.forEach(roomNumber => {
+    const room = data.rooms.find(room => room.number === roomNumber);
+    const booking = data.bookings.find(
+      booking => booking.roomNumber === roomNumber,
+    );
 
     const card = createNewBookingRoomCard(room, booking);
     roomCards.push(card);
