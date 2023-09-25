@@ -30,11 +30,9 @@ const currentDate = new Date().toISOString().split('T')[0]
 const container = document.getElementById('available-rooms-section');
 const searchView = document.querySelector('.search-view');
 const dropDownMenu = document.getElementById('dropdown')
-const roomElements = document.querySelectorAll('.new-booking-room-card')
-
 
 let data; 
-let availableRoomNumbers;
+
 
 document.addEventListener('DOMContentLoaded', function () {
   const promises = [
@@ -125,3 +123,12 @@ dropDownMenu.addEventListener('change', function(event) {
   displayFilteredRoomsByType(filteredRoomNumbers)
  
 })
+
+// bookNowButton.addEventListener('click', function () {
+//  console.log('button clicked!')
+//   const selectedDate = dateInput.value
+//  const roomNumber = bookedRoom.number
+//  const userID = getUserId(username)
+//   createNewBooking(userID, selectedDate, roomNumber);
+
+// })
