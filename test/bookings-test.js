@@ -1,7 +1,7 @@
 const expect = chai.expect;
 import chai from 'chai';
 import { data } from '../src/data/testData';
-import { getUserId, getBookingsByCustomer, calculateTotalRoomCost } from '../src/bookings';
+import { getUserId, getBookingsByCustomer, calculateTotalRoomCost, convertDateStringsToDates } from '../src/bookings';
 
 
 describe('getUserId', () => {
@@ -71,5 +71,15 @@ describe('Calculate Total Room Cost', function () {
     expect(totalCost).to.equal(0);
   });
 });
+
+
+
+
+
+
+
+
+
+
 
 
