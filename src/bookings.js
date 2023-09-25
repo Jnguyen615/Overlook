@@ -35,3 +35,49 @@ export function calculateTotalRoomCost(userId, data) {
   }, 0);
   return totalCost;
 }
+
+export function handleDateSelection(data, selectedDateValue) {
+  if (selectedDateValue) {
+      const selectedDate = new Date(selectedDateValue);
+      const matchingBookings = getBookingsByDate(data, selectedDate);
+      // const roomNumbers = getRoomNumbersFromBookings(matchingBookings);
+
+      return selectedDate; 
+  } else {
+      console.log('Please select a date from the calendar.');
+      return null; 
+  }
+}
+export function getAvailableRoomsByDate(data, searchForDate) {
+  const selectedDate = new Date(searchForDate);
+  selectedDate.setHours(0, 0, 0, 0);
+  const matchingBookings = data.bookings.filter((booking) => {
+    const bookingDate = new Date(booking.date);
+    return (
+      bookingDate.getFullYear() === selectedDate.getFullYear() &&
+      bookingDate.getMonth() === selectedDate.getMonth() &&
+      bookingDate.getDate() === selectedDate.getDate()
+    );
+  });
+
+  const bookedRoomNumbers = matchingBookings.map((booking) => booking.roomNumber);
+
+  const availableRooms = data.rooms.filter((room) => !bookedRoomNumbers.includes(room.number));
+
+  const availableRoomNumbers = availableRooms.map((room) => room.number);
+    if(!availableRoomNumbers) {
+      return 'We\'re sorry, there are no available room\'s for this day.'
+    }
+
+  return availableRoomNumbers;
+}
+
+
+
+
+
+
+
+
+
+
