@@ -19,7 +19,7 @@ export function getBookingsByCustomer(userId, data) {
   const matchingBookings = data.bookings.filter(booking => {
     return booking.userID === userId;
   });
- return matchingBookings
+  return matchingBookings;
 }
 
 export function calculateTotalRoomCost(userId, data) {
@@ -38,50 +38,48 @@ export function calculateTotalRoomCost(userId, data) {
 
 export function handleDateSelection(data, selectedDateValue) {
   if (selectedDateValue) {
-      const selectedDate = new Date(selectedDateValue);
-      const matchingBookings = getBookingsByDate(data, selectedDate);
-      // const roomNumbers = getRoomNumbersFromBookings(matchingBookings);
+    const selectedDate = new Date(selectedDateValue);
+    const matchingBookings = getBookingsByDate(data, selectedDate);
+    // const roomNumbers = getRoomNumbersFromBookings(matchingBookings);
 
-      return selectedDate; 
+    return selectedDate;
   } else {
-      console.log('Please select a date from the calendar.');
-      return null; 
+    console.log('Please select a date from the calendar.');
+    return null;
   }
 }
 export function getAvailableRoomsByDate(data, searchForDate) {
-  const selectedDate = new Date(searchForDate);
-  selectedDate.setHours(0, 0, 0, 0);
-  const matchingBookings = data.bookings.filter((booking) => {
-    const bookingDate = new Date(booking.date);
-    return (
-      bookingDate.getFullYear() === selectedDate.getFullYear() &&
-      bookingDate.getMonth() === selectedDate.getMonth() &&
-      bookingDate.getDate() === selectedDate.getDate()
-    );
-  });
+  const matchingBookings = data.bookings.filter(booking => {
+    let formattedDate = booking.date.replace(/\//g, '-');
+    console.log('formattedDate', formattedDate);
+    return formattedDate === searchForDate;
+  })
+  const bookedRoomNumbers = matchingBookings.map(booking => booking.roomNumber);
+console.log('bookedRoomNumbers', bookedRoomNumbers)
+  const availableRooms = data.rooms.filter(
+    room => !bookedRoomNumbers.includes(room.number),
+  );
 
-  const bookedRoomNumbers = matchingBookings.map((booking) => booking.roomNumber);
+  const availableRoomNumbers = availableRooms.map(room => room.number);
 
-  const availableRooms = data.rooms.filter((room) => !bookedRoomNumbers.includes(room.number));
-
-  const availableRoomNumbers = availableRooms.map((room) => room.number);
-    if(!availableRoomNumbers) {
-      return 'We\'re sorry, there are no available room\'s for this day.'
-    }
+  if (availableRoomNumbers.length === 0) {
+    return [];
+  }
 
   return availableRoomNumbers;
 }
 
-export function filterRoomsByType () {
-  availableRoomNumbers.filter(room => room[e.target.value])
+export function filterRoomsByType(
+  availableRoomNumbers,
+  selectedRoomType,
+  data,
+) {
+  // const availableRoomNumbers = getAvailableRoomsByDate(data) //?????????
+  console.log('availableRoomsInFunction', availableRoomNumbers);
+  return availableRoomNumbers.filter(roomNumber => {
+    const room = data.rooms.filter(room => room.number === roomNumber);
+
+    return room.roomType === selectedRoomType;
+  });
+  return room;
 }
-
-
-
-
-
-
-
-
-
-
