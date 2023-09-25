@@ -5,6 +5,7 @@ import {
   populateRoomCardSection,
   handleLoginError,
   displayTotalSpent,
+  displayAvailableRoomCards,
 } from './dom-updates';
 import { getUserId } from './bookings';
 import flatpickr from 'flatpickr';
@@ -18,10 +19,16 @@ const mainPageLogo = document.querySelector('.title');
 const mainPageView = document.querySelector('.main-view');
 const newBookingButton = document.querySelector('#new-booking-button');
 const topBar = document.querySelector('.main-page-view-top-bar');
-const bookingsArea = document.querySelector('#bookings-section');
+const bookingsArea = document.getElementById('bookings-section');
 const welcomeTitle = document.querySelector('.welcome-user');
+const body = document.body
+const dateInput = document.querySelector('.date-calendar')
+const currentDate = new Date().toISOString().split('T')[0]
+const container = document.getElementById('available-rooms-section');
+const searchView = document.querySelector('.search-view');
 
-let data;
+
+let data; 
 
 document.addEventListener('DOMContentLoaded', function () {
   const promises = [
@@ -29,7 +36,8 @@ document.addEventListener('DOMContentLoaded', function () {
     fetchData('rooms'),
     fetchData('bookings'),
   ];
-
+  body.style.backgroundImage ='url("./images/main-view-background.png")';
+  dateInput.setAttribute('min', currentDate)
   Promise.all(promises)
     .then(results => {
       data = {
@@ -46,6 +54,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 usernameInput.addEventListener('input', checkInputs);
 passwordInput.addEventListener('input', checkInputs);
+// calendarCells.forEach((cell) => {
+//   cell.addEventListener('click', handleDateSelection(bookings));
+// });
+
 
 loginButton.addEventListener('click', function (event) {
   event.preventDefault();
@@ -62,7 +74,6 @@ loginButton.addEventListener('click', function (event) {
     const userID = getUserId(username);
     const customerName = getCustomer(userID, data);
     if (bookingsArea) {
-      // switchBackgroundToMain(mainViewBackground)
       populateRoomCardSection(data.rooms, userID, data, bookingsArea);
       displayTotalSpent(userID, data);
     }
@@ -72,9 +83,26 @@ loginButton.addEventListener('click', function (event) {
   }
 });
 
-newBookingButton.addEventListener('click', function () {
+newBookingButton.addEventListener('click', function (event) {
+  event.preventDefault();
   mainPageView.hidden = true;
+  // bookingsArea.hidden = true;
+  const searchForDate = document.getElementById('selected-date-input').value;
+  console.log('searchDate', searchForDate);
+
+  if (searchForDate) {
+     displayAvailableRoomCards(data, searchForDate, container)
+     //call my dom function here
+  } else {
+      console.log('Please select a date from the calendar.');
+  }
 });
+
+dateInput.addEventListener('input', function() {
+  if (dateInput.value) {
+    newBookingButton.disabled = false;
+  }
+})
 
 function checkInputs() {
   const username = usernameInput.value.trim();
@@ -85,6 +113,4 @@ function checkInputs() {
     loginButton.setAttribute('disabled', 'true');
   }
 }
-form.addEventListener('submit', function (e) {
-  e.preventDefault();
-});
+
