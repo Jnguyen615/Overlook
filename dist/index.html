@@ -19,7 +19,6 @@
     <title>Overlook:A booking Website</title>
   </head>
   <body>
-    <img src="./images/main-view-background.png">
     <main>
       <h1 class="title">
         Overlook Hotel: Where you book your view of the sky!
@@ -66,14 +65,17 @@
           <!-- Total customer has spent will go here-->
           <p class="total-spent"></p>
           <form id="calendar-form">
-            <input class="date-calendar"
-            type="date" 
-            required
+            <input
+              class="date-calendar"
+              id="selected-date-input"
+              type="date"
+              required
             />
             <button
               id="new-booking-button"
-              type="submit"
+              type="button"
               aria-label="New booking"
+              disabled
             >
               New Booking
             </button>
@@ -81,10 +83,14 @@
         </section>
         <div id="bookings-section"></div>
         <!-- Bookings cards appear here -->
-        <section class="search-view" hidden>
-          <p class="available-rooms">Available Rooms</p>
-          <!-- html for calendar/filtered room search -->
+      </section>
+      <section class="search-view">
+        <section id="error-section">
         </section>
+        <p class="available-room-text" hidden >Available Rooms</p>
+        <section id="available-rooms-section">
+        </section>
+        <!-- html for calendar/filtered room search -->
       </section>
     </main>
     <!-- flatpickr -->
