@@ -136,3 +136,15 @@ export function generateRoomCards(data, searchForDate) {
   });
   return roomCards;
 }
+
+export function displayFilteredRoomsByType (selectedRoomType) {
+  roomElements.forEach((roomElement) => {
+    const roomDataFromType = roomElement.getAttribute('data-room-type');
+
+    if (roomDataFromType === selectedRoomType) {
+      roomElement.style.display = 'block';
+    } else {
+      roomElement.style.display = 'none'
+    }
+  })
+}
