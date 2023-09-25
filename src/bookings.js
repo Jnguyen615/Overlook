@@ -51,21 +51,20 @@ export function handleDateSelection(data, selectedDateValue) {
 export function getAvailableRoomsByDate(data, searchForDate) {
   const matchingBookings = data.bookings.filter(booking => {
     let formattedDate = booking.date.replace(/\//g, '-');
-    console.log('formattedDate', formattedDate);
     return formattedDate === searchForDate;
-  })
+  });
   const bookedRoomNumbers = matchingBookings.map(booking => booking.roomNumber);
-console.log('bookedRoomNumbers', bookedRoomNumbers)
   const availableRooms = data.rooms.filter(
     room => !bookedRoomNumbers.includes(room.number),
   );
-
   const availableRoomNumbers = availableRooms.map(room => room.number);
 
   if (availableRoomNumbers.length === 0) {
+    const roomAvailabilityText = document.querySelector('.availabe-room-text');
+    roomAvailabilityText.textContent =
+      'Sorry, there are no rooms available for this date';
     return [];
   }
-
   return availableRoomNumbers;
 }
 
