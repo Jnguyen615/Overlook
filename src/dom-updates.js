@@ -2,8 +2,10 @@ import {
   getBookingsByCustomer,
   calculateTotalRoomCost,
   getAvailableRoomsByDate,
+  getUserId,
 } from './bookings';
 
+import { createNewBooking } from './api-calls';
 export function handleLoginError(loginMessage) {
   loginMessage.textContent = 'Please check your username and password again';
 }
@@ -115,8 +117,21 @@ export function createNewBookingRoomCard(room, booking) {
   </tr>
   </table>
   <br></br>
-    <button id="book-button" type="button">Book!</button>
+    <button id="book-now-button" type="button">Book Now!</button>
 `;
+  const bookNowButton = roomDetails.querySelector('#book-now-button');
+  if (bookNowButton) {
+    bookNowButton.addEventListener('click', function (event) {
+      // const selectedRoomType = event.target.value
+      const selectedDate = document.getElementById('selected-date-input').value;
+      bookNowButton.dataset.roomNumber = room.number;
+      bookNowButton.dataset.bookingDate = booking.date;
+      console.log('Room Number:', room.number);
+      console.log('Booking Date:', selectedDate);
+      const userID = getUserId(username);
+      createNewBooking(userID, selectedDate, roomNumber);
+    });
+  }
   card.appendChild(roomDetails);
   return card;
 }
@@ -137,14 +152,14 @@ export function generateRoomCards(data, searchForDate) {
   return roomCards;
 }
 
-export function displayFilteredRoomsByType (selectedRoomType) {
-  roomElements.forEach((roomElement) => {
+export function displayFilteredRoomsByType(selectedRoomType) {
+  roomElements.forEach(roomElement => {
     const roomDataFromType = roomElement.getAttribute('data-room-type');
 
     if (roomDataFromType === selectedRoomType) {
       roomElement.style.display = 'block';
     } else {
-      roomElement.style.display = 'none'
+      roomElement.style.display = 'none';
     }
-  })
+  });
 }
