@@ -11,11 +11,11 @@ export const fetchData = dataType => {
     });
 };
 
-export function createNewBooking() {
+export function createNewBooking(userID, selectedDate, roomNumber) {
+  console.log({userID, selectedDate, roomNumber})
   fetch('http://localhost:3001/api/v1/bookings', {
     method: 'POST',
     body: JSON.stringify({
-      id: (data.bookings.length + 1).toString(),
       userID: userID,
       date: selectedDate,
       roomNumber: roomNumber
@@ -25,6 +25,7 @@ export function createNewBooking() {
     },
   })
     .then(postResponse => {
+      console.log('PR', postResponse)
       if (!postResponse.ok) {
         throw new Error(
           `POST network response was not ok: ${postResponse.status}`,
@@ -32,8 +33,11 @@ export function createNewBooking() {
       }
       return postResponse.json();
     })
-    .then(json => {
-      console.log(json);
+    .then(newBooking => {
+      console.log(data)
+      console.log('new booking', newBooking)
+      data.bookings.push(newBooking);
+      displayNewBooking(data, newBooking)
     })
     .catch(error => {
       console.error('Error:', error);
