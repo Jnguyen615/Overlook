@@ -7,10 +7,9 @@ import {
   displayTotalSpent,
   displayAvailableRoomCards,
   displayFilteredRoomsByType,
+  backToMainPage,
 } from './dom-updates';
-import { getUserId, 
-  filterRoomsByType,  } from './bookings';
-import flatpickr from 'flatpickr';
+import { getUserId, filterRoomsByType } from './bookings';
 import './images/main-view-background.png';
 
 const form = document.getElementById('login-form');
@@ -19,22 +18,21 @@ const passwordInput = document.querySelector('#password');
 const loginButton = document.getElementById('login-button');
 const mainPageLogo = document.querySelector('.title');
 const mainPageView = document.querySelector('.main-view');
-const newBookingButton = document.querySelector('#new-booking-button');
+const newBookingButton = document.getElementById('new-booking-button');
 const topBar = document.querySelector('.main-page-view-top-bar');
 const searchViewTopBar = document.querySelector('.search-view-top-bar');
 const bookingsArea = document.getElementById('bookings-section');
 const welcomeTitle = document.querySelector('.welcome-user');
-const body = document.body
-const dateInput = document.querySelector('.date-calendar')
-const currentDate = new Date().toISOString().split('T')[0]
+const body = document.body;
+const dateInput = document.querySelector('.date-calendar');
+const currentDate = new Date().toISOString().split('T')[0];
 const container = document.getElementById('available-rooms-section');
 const searchView = document.querySelector('.search-view');
-const dropDownMenu = document.getElementById('dropdown')
-const roomElements = document.querySelectorAll('.new-booking-room-card')
+const dropDownMenu = document.getElementById('dropdown');
+const backToMainButton = document.getElementById('back-to-main');
 
-
-let data; 
-let availableRoomNumbers;
+let data;
+let username;
 
 document.addEventListener('DOMContentLoaded', function () {
   const promises = [
@@ -42,8 +40,8 @@ document.addEventListener('DOMContentLoaded', function () {
     fetchData('rooms'),
     fetchData('bookings'),
   ];
-  body.style.backgroundImage ='url("./images/main-view-background.png")';
-  dateInput.setAttribute('min', currentDate)
+  body.style.backgroundImage = 'url("./images/main-view-background.png")';
+  dateInput.setAttribute('min', currentDate);
   Promise.all(promises)
     .then(results => {
       data = {
@@ -61,12 +59,11 @@ document.addEventListener('DOMContentLoaded', function () {
 usernameInput.addEventListener('input', checkInputs);
 passwordInput.addEventListener('input', checkInputs);
 
-
 loginButton.addEventListener('click', function (event) {
   event.preventDefault();
   const loginMessage = document.querySelector('.login-message');
-  const username = usernameInput.value.trim();
   const password = passwordInput.value.trim();
+  username = usernameInput.value.trim();
   const submitResponse = checkUsernameAndPassword(username, password);
 
   if (submitResponse === true) {
@@ -90,21 +87,21 @@ newBookingButton.addEventListener('click', function (event) {
   event.preventDefault();
   mainPageView.hidden = true;
   searchViewTopBar.hidden = false;
-  searchView.hidden = false; 
+  searchView.hidden = false;
   const searchForDate = document.getElementById('selected-date-input').value;
 
   if (searchForDate) {
-     displayAvailableRoomCards(data, searchForDate, container)
+    displayAvailableRoomCards(data, searchForDate, container, username);
   } else {
-      console.log('Please select a date from the calendar.');
+    console.log('Please select a date from the calendar.');
   }
 });
 
-dateInput.addEventListener('input', function() {
+dateInput.addEventListener('input', function () {
   if (dateInput.value) {
     newBookingButton.disabled = false;
   }
-})
+});
 
 function checkInputs() {
   const username = usernameInput.value.trim();
@@ -116,12 +113,17 @@ function checkInputs() {
   }
 }
 
-dropDownMenu.addEventListener('change', function(event) {
-  const selectedRoomType = event.target.value
-  console.log('selectedRoomType', selectedRoomType)
-  const availableRoomNumbers = getAvailabeRoomsByDate(data, searchForDate)
+dropDownMenu.addEventListener('change', function (event) {
+  const selectedRoomType = event.target.value;
+  console.log('selectedRoomType', selectedRoomType);
+  const availableRoomNumbers = getAvailabeRoomsByDate(data, searchForDate);
 
-  const filteredRoomNumbers = filterRoomsByType(availableRoomNumbers, selectedRoomType, data);
-  displayFilteredRoomsByType(filteredRoomNumbers)
- 
-})
+  // const filteredRoomNumbers = filterRoomsByType(availableRoomNumbers, selectedRoomType, data);
+  displayFilteredRoomsByType(filteredRoomNumbers);
+});
+
+backToMainButton.addEventListener('click', function () {
+  searchViewTopBar.hidden = true;
+  searchView.hidden = true;
+  mainPageView.hidden = false;
+});

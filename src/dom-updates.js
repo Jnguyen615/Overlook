@@ -171,8 +171,6 @@ export function displayFilteredRoomsByType(selectedRoomType) {
 export function displayNewBooking(data, booking) {
   const bookingsArea = document.getElementById('bookings-section');
   if (bookingsArea) {
-    // const room = data.rooms.find(room => room.number === booking.roomNumber);
-    // console.log('room', room)
     if (typeof data.rooms === 'object' && booking.roomNumber in data.rooms) {
       const room = data.rooms[booking.roomNumber]
       if (room) {

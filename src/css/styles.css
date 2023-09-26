@@ -25,7 +25,7 @@ h2 {
   text-align: center;
   color: azure;
   margin-bottom: 3%;
-  font-size:30px;
+  font-size: 30px;
 }
 
 .login-container {
@@ -58,9 +58,32 @@ label {
 
 #login-button {
   cursor: pointer;
-  background-color: ghostwhite;
-  border-radius: 5%;
+
+  border-top: 1px solid #96d1f8;
+  background: #65a9d7;
+  -webkit-border-radius: 40px;
+  -moz-border-radius: 40px;
+  border-radius: 40px;
+  -webkit-box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
+  -moz-box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
+  box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
+  text-shadow: rgba(0, 0, 0, 0.4) 0 1px 0;
+  color: white;
+  font-size: 15px;
+  font-family: 'Lucida Grande', Helvetica, Arial, Sans-Serif;
+  text-decoration: none;
+  vertical-align: middle;
   font-size: 20px;
+}
+
+#login-button:hover {
+  border-top-color: #28597a;
+  background: #28597a;
+  color: #ccc;
+}
+#login-button:active {
+  border-top-color: #1b435e;
+  background: #1b435e;
 }
 
 .main-page-view-top-bar {
@@ -97,16 +120,17 @@ label {
   justify-content: space-between;
   align-items: center;
   margin-right: 44%;
-
 }
 
-#bookings-section, #available-rooms-section {
+#bookings-section,
+#available-rooms-section {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 10px;
 }
 
-.room-card, .new-booking-room-card {
+.room-card,
+.new-booking-room-card {
   box-shadow: inset 5px 5px 10px #cce3f3, inset -4px -4px 5px #65768f;
   border-radius: 3%;
   border-radius: 3%;
@@ -121,11 +145,11 @@ label {
 ul {
   display: flex;
   flex-direction: column;
+  align-items: center;
   list-style-type: none;
   padding: 6%;
   font-size: 14px;
   color: black;
-
 }
 
 tr {
@@ -139,16 +163,41 @@ tr {
   align-items: center;
 }
 
-#new-booking-button {
+#new-booking-button,
+#book-now-button,
+#back-to-main {
   cursor: pointer;
-  background-color: ghostwhite;
-  border-radius: 9%;
+
+  border-top: 1px solid #96d1f8;
+  background: #65a9d7;
+  -webkit-border-radius: 40px;
+  -moz-border-radius: 40px;
+  border-radius: 40px;
+  -webkit-box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
+  -moz-box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
+  box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
+  text-shadow: rgba(0, 0, 0, 0.4) 0 1px 0;
+  color: white;
+  font-size: 15px;
+  font-family: 'Lucida Grande', Helvetica, Arial, Sans-Serif;
+  text-decoration: none;
+  vertical-align: middle;
   font-size: 13px;
   height: 25px;
 }
 
+#new-booking-button:hover {
+  border-top-color: #28597a;
+  background: #28597a;
+  color: #ccc;
+}
+#new-booking-button:active {
+  border-top-color: #1b435e;
+  background: #1b435e;
+}
+
 #calendar-form {
- height: 15px;
+  height: 15px;
 }
 
 .total-spent {
@@ -177,7 +226,7 @@ tr {
 }
 
 #book-button {
-  float:right
+  float: right;
 }
 
 .display {
