@@ -36,18 +36,6 @@ export function calculateTotalRoomCost(userId, data) {
   return totalCost;
 }
 
-export function handleDateSelection(data, selectedDateValue) {
-  if (selectedDateValue) {
-    const selectedDate = new Date(selectedDateValue);
-    const matchingBookings = getBookingsByDate(data, selectedDate);
-    // const roomNumbers = getRoomNumbersFromBookings(matchingBookings);
-
-    return selectedDate;
-  } else {
-    console.log('Please select a date from the calendar.');
-    return null;
-  }
-}
 export function getAvailableRoomsByDate(data, searchForDate) {
   const matchingBookings = data.bookings.filter(booking => {
     let formattedDate = booking.date.replace(/\//g, '-');
@@ -62,23 +50,23 @@ export function getAvailableRoomsByDate(data, searchForDate) {
   if (availableRoomNumbers.length === 0) {
     const roomAvailabilityText = document.querySelector('.availabe-room-text');
     roomAvailabilityText.textContent =
-      'Sorry, there are no rooms available for this date';
+      'Sorry, there are no rooms available for this date.';
     return [];
   }
   return availableRoomNumbers;
 }
 
-export function filterRoomsByType(
-  availableRoomNumbers,
-  selectedRoomType,
-  data,
-) {
-  // const availableRoomNumbers = getAvailableRoomsByDate(data) //?????????
-  console.log('availableRoomsInFunction', availableRoomNumbers);
-  return availableRoomNumbers.filter(roomNumber => {
-    const room = data.rooms.filter(room => room.number === roomNumber);
+// export function filterRoomsByType(
+//   availableRoomNumbers,
+//   selectedRoomType,
+//   data,
+// ) {
+//   // const availableRoomNumbers = getAvailableRoomsByDate(data) //?????????
+//   console.log('availableRoomsInFunction', availableRoomNumbers);
+//   return availableRoomNumbers.filter(roomNumber => {
+//     const room = data.rooms.filter(room => room.number === roomNumber);
 
-    return room.roomType === selectedRoomType;
-  });
-  return room;
-}
+//     return room.roomType === selectedRoomType;
+//   });
+//   return room;
+// }
