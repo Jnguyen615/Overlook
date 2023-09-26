@@ -127,6 +127,7 @@ export function createNewBookingRoomCard(room, username) {
   const bookNowButton = roomDetails.querySelector('#book-now-button');
   if (bookNowButton) {
     bookNowButton.addEventListener('click', function (event) {
+      event.preventDefault()
       console.log('bookNow', event);
       const selectedDate = document.getElementById('selected-date-input').value;
       const userID = getUserId(username);
@@ -170,19 +171,20 @@ export function displayFilteredRoomsByType(selectedRoomType) {
 export function displayNewBooking(data, booking) {
   const bookingsArea = document.getElementById('bookings-section');
   if (bookingsArea) {
-    const room = data.rooms.find(room => room.number === booking.roomNumber);
-    if (room) {
-      console.log('room', room);
-      const roomCard = createRoomCard(room, booking);
+    if (typeof data.rooms === 'object' && booking.roomNumber in data.rooms) {
+      const room = data.rooms[booking.roomNumber]
+      if (room) {
+       const roomCard = createRoomCard(booking);
       console.log('roomCard', roomCard);
-      bookingsArea.appendChild(roomCard);
+       bookingsArea.appendChild(roomCard);
+      }
     }
   }
-  displayNewBookingMessage(newBooking);
+  displayNewBookingMessage(booking);
 }
 
 export function displayNewBookingMessage(data, newBooking) {
-  const successMessage = document.querySelector('.success-message');
+  const successMessage = document.querySelector('.available-room-text');
 
   if (successMessage) {
     successMessage.textContent = 'Room successfully booked!';

@@ -1,3 +1,5 @@
+import { displayNewBooking } from './dom-updates'
+
 let data;
 
 export const fetchData = dataType => {
@@ -45,9 +47,9 @@ export function createNewBooking(userID, selectedDate, roomNumber) {
           }
           return response.json();
         })
-        .then(updatedData => {
-          // data.bookings.push(newBooking)
+        .then(newBooking => {
           displayNewBooking(newBooking);
+          console.log('newBooking', newBooking)
         })
         .catch(error => {
           console.error('Error fetching updated data:', error);
