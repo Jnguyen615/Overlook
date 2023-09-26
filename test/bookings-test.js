@@ -6,6 +6,7 @@ import {
   getBookingsByCustomer,
   calculateTotalRoomCost,
   getAvailableRoomsByDate,
+  filterRoomsByType
 } from '../src/bookings';
 
 describe('getUserId', () => {
@@ -84,3 +85,31 @@ describe('it should filter available rooms by date', () => {
     expect(availableRooms).to.deep.equal([1, 2, 3, 4, 12]);
   });
 });
+
+describe('filterRoomsByType', () => {
+  const data = {  // Your data structure
+    bookings: [/* ... */],
+    customers: [/* ... */],
+    rooms: [/* ... */],
+  };
+
+  it('should filter rooms by room type', () => {
+    const selectedRoomType = 'suite';
+    const searchForDate = '2022/02/05'; // Provide a date from your data
+    const filteredRooms = filterRoomsByType(selectedRoomType, data, searchForDate);
+
+    const expectedRoomType = 'suite';
+    filteredRooms.forEach(room => {
+      expect(room.roomType).to.equal(expectedRoomType);
+    });
+  });
+
+  it('should return an empty array when no rooms match the type', () => {
+    const selectedRoomType = 'nonexistent_type';
+    const searchForDate = '2022/02/05'; // Provide a date from your data
+    const filteredRooms = filterRoomsByType(selectedRoomType, data, searchForDate);
+
+    expect(filteredRooms).to.be.an('array').that.is.empty;
+  });
+});
+

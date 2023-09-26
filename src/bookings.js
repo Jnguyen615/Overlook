@@ -56,17 +56,8 @@ export function getAvailableRoomsByDate(data, searchForDate) {
   return availableRoomNumbers;
 }
 
-export function filterRoomsByType(
-  availableRoomNumbers,
-  selectedRoomType,
-  data,
-) {
-  // const availableRoomNumbers = getAvailableRoomsByDate(data) //?????????
-  console.log('availableRoomsInFunction', availableRoomNumbers);
-  return availableRoomNumbers.filter(roomNumber => {
-    const room = data.rooms.filter(room => room.number === roomNumber);
-
-    return room.roomType === selectedRoomType;
-  });
-  return room;
+export function filterRoomsByType(selectedRoomType, data) {
+  const filteredRoomsByType = data.rooms.filter(
+    room => room.roomType === selectedRoomType,
+  );
 }

@@ -1,4 +1,4 @@
-import { displayNewBooking } from './dom-updates'
+import { displayNewBooking, populateRoomCardSelection } from './dom-updates';
 
 let data;
 
@@ -16,8 +16,7 @@ export const fetchData = dataType => {
 };
 
 export function createNewBooking(userID, selectedDate, roomNumber) {
-  console.log({ userID, selectedDate, roomNumber });
-  fetch('http://localhost:3001/api/v1/bookings', {
+  return fetch('http://localhost:3001/api/v1/bookings', {
     method: 'POST',
     body: JSON.stringify({
       userID: userID,
@@ -29,30 +28,25 @@ export function createNewBooking(userID, selectedDate, roomNumber) {
     },
   })
     .then(postResponse => {
-      console.log('PR', postResponse);
       if (!postResponse.ok) {
         throw new Error(
           `POST network response was not ok: ${postResponse.status}`,
         );
       }
-      return postResponse.json();
+      console.log('PR', postResponse);
+
+      return fetch('http://localhost:3001/api/v1/bookings');
     })
-    .then(newBooking => {
-      fetch('http://localhost:3001/api/v1/bookings')
-        .then(response => {
-          if (!response.ok) {
-            throw new Error(
-              `GET network response was not ok: ${response.status}`,
-            );
-          }
-          return response.json();
-        })
-        .then(newBooking => {
-          displayNewBooking(newBooking);
-          console.log('newBooking', newBooking)
-        })
-        .catch(error => {
-          console.error('Error fetching updated data:', error);
-        });
+    .then(updatedBookings => {
+      if (!updatedBookings.ok) {
+        throw new Error(
+          `GET network response was not ok: ${updatedBookings.status}`,
+        );
+      }
+      return updatedBookings.json();
+    })
+    .catch((error) => {
+      console.error('Error creating and displaying new booking:', error);
+      return error;
     });
 }

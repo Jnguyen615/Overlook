@@ -53,17 +53,15 @@ export function createRoomCard(room, booking) {
 }
 
 export function populateRoomCardSection(rooms, userID, data, bookingsArea) {
-  if (bookingsArea) {
-    const customerBookings = getBookingsByCustomer(userID, data);
-    bookingsArea.innerHTML = '';
-    customerBookings.forEach(booking => {
-      const room = rooms.find(room => room.number === booking.roomNumber);
-      if (room) {
-        const roomCard = createRoomCard(room, booking);
-        bookingsArea.appendChild(roomCard);
-      }
-    });
-  }
+  const customerBookings = getBookingsByCustomer(userID, data);
+  bookingsArea.innerHTML = '';
+  customerBookings.forEach(booking => {
+    const room = rooms.find(room => room.number === booking.roomNumber);
+    if (room) {
+      const roomCard = createRoomCard(room, booking);
+      bookingsArea.appendChild(roomCard);
+    }
+  });
 }
 
 export function displayTotalSpent(userId, data) {
@@ -127,17 +125,20 @@ export function createNewBookingRoomCard(room, username) {
   const bookNowButton = roomDetails.querySelector('#book-now-button');
   if (bookNowButton) {
     bookNowButton.addEventListener('click', function (event) {
-      event.preventDefault()
-      console.log('bookNow', event);
+      event.preventDefault();
       const selectedDate = document.getElementById('selected-date-input').value;
       const userID = getUserId(username);
-      console.log('userID', userID);
       let originalDateFormat = selectedDate.replace(/-/g, '/');
-      createNewBooking(userID, originalDateFormat, room.number);
+      createNewBooking(userID, originalDateFormat, room.number).then(
+        updatedBookings => {
+          data.bookings = updatedBookings;
+        },
+      );
     });
+
+    card.appendChild(roomDetails);
+    return card;
   }
-  card.appendChild(roomDetails);
-  return card;
 }
 
 export function generateRoomCards(data, searchForDate, username) {
@@ -172,11 +173,11 @@ export function displayNewBooking(data, booking) {
   const bookingsArea = document.getElementById('bookings-section');
   if (bookingsArea) {
     if (typeof data.rooms === 'object' && booking.roomNumber in data.rooms) {
-      const room = data.rooms[booking.roomNumber]
+      const room = data.rooms[booking.roomNumber];
       if (room) {
-       const roomCard = createRoomCard(booking);
-      console.log('roomCard', roomCard);
-       bookingsArea.appendChild(roomCard);
+        const roomCard = createRoomCard(booking);
+
+        bookingsArea.appendChild(roomCard);
       }
     }
   }
@@ -189,4 +190,24 @@ export function displayNewBookingMessage(data, newBooking) {
   if (successMessage) {
     successMessage.textContent = 'Room successfully booked!';
   }
+}
+
+export function displayFilteredRooms(
+  data,
+  filteredRooms,
+  searchForDate,
+  username,
+  container,
+) {
+  container.innerHTML = '';
+
+  const roomCards = generateRoomCards(
+    data,
+    searchForDate,
+    username,
+    filteredRooms,
+  );
+  roomCards.forEach(roomCard => {
+    container.appendChild(roomCard);
+  });
 }
