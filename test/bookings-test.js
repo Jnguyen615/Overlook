@@ -6,6 +6,7 @@ import {
   getBookingsByCustomer,
   calculateTotalRoomCost,
   getAvailableRoomsByDate,
+  filterRoomsByType
 } from '../src/bookings';
 
 describe('getUserId', () => {
@@ -84,3 +85,45 @@ describe('it should filter available rooms by date', () => {
     expect(availableRooms).to.deep.equal([1, 2, 3, 4, 12]);
   });
 });
+
+describe('filterRoomsByType', () => {
+  it('should filter rooms by type correctly', () => {
+    const selectedRoomType = 'single room';
+    const filteredRooms = filterRoomsByType(selectedRoomType, data);
+    const room = filteredRooms[0];
+
+    expect(filteredRooms).to.deep.equal([{
+      number: 3,
+      roomType: 'single room',
+      bidet: false,
+      bedSize: 'king',
+      numBeds: 1,
+      costPerNight: 491.14
+    },
+    {
+      number: 4,
+      roomType: 'single room',
+      bidet: false,
+      bedSize: 'queen',
+      numBeds: 1,
+      costPerNight: 429.44
+    },
+    {
+      number: 12,
+      roomType: 'single room',
+      bidet: false,
+      bedSize: 'twin',
+      costPerNight: 172.09
+    }]);
+
+    expect(room.roomType).to.equal(selectedRoomType);
+  });
+});
+
+
+
+
+
+
+
+

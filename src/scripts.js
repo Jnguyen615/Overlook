@@ -6,8 +6,9 @@ import {
   handleLoginError,
   displayTotalSpent,
   displayAvailableRoomCards,
-  displayFilteredRoomsByType,
-  backToMainPage,
+  displayFilteredRooms,
+  createNewBooking,
+  displayNewBooking,
 } from './dom-updates';
 import { getUserId, filterRoomsByType } from './bookings';
 import './images/main-view-background.png';
@@ -33,8 +34,9 @@ const backToMainButton = document.getElementById('back-to-main');
 
 let data;
 let username;
+let userID;
 
-document.addEventListener('DOMContentLoaded', function () {
+window.addEventListener('DOMContentLoaded', function () {
   const promises = [
     fetchData('customers'),
     fetchData('rooms'),
@@ -71,7 +73,7 @@ loginButton.addEventListener('click', function (event) {
     mainPageLogo.hidden = true;
     mainPageView.hidden = false;
     topBar.style.display = 'flex';
-    const userID = getUserId(username);
+    userID = getUserId(username);
     const customerName = getCustomer(userID, data);
     if (bookingsArea) {
       populateRoomCardSection(data.rooms, userID, data, bookingsArea);
@@ -115,15 +117,25 @@ function checkInputs() {
 
 dropDownMenu.addEventListener('change', function (event) {
   const selectedRoomType = event.target.value;
-  console.log('selectedRoomType', selectedRoomType);
-  const availableRoomNumbers = getAvailabeRoomsByDate(data, searchForDate);
-
-  // const filteredRoomNumbers = filterRoomsByType(availableRoomNumbers, selectedRoomType, data);
-  displayFilteredRoomsByType(filteredRoomNumbers);
+  const searchForDate = document.getElementById('selected-date-input').value;
+  if (selectedRoomType === 'select an option') {
+    displayAllRooms(data, searchForDate, username);
+  } else {
+    const filteredRooms = filterRoomsByType(selectedRoomType, data);
+    displayFilteredRooms(
+      data,
+      filteredRooms,
+      searchForDate,
+      username,
+      container,
+    );
+  }
 });
 
-backToMainButton.addEventListener('click', function () {
+backToMainButton.addEventListener('click', function (event) {
+  container.hidden = true;
   searchViewTopBar.hidden = true;
   searchView.hidden = true;
   mainPageView.hidden = false;
+  populateRoomCardSection(data.rooms, userID, data, bookingsArea);
 });
