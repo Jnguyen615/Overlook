@@ -75,7 +75,12 @@ export function displayTotalSpent(userId, data) {
   }
 }
 
-export function displayAvailableRoomCards(data, searchForDate, container, username) {
+export function displayAvailableRoomCards(
+  data,
+  searchForDate,
+  container,
+  username,
+) {
   const roomCards = generateRoomCards(data, searchForDate, username);
   container.innerHTML = null;
   roomCards.forEach(roomCard => {
@@ -118,21 +123,14 @@ export function createNewBookingRoomCard(room, username) {
   </table>
   <br></br>
     <button id="book-now-button" type="button">Book Now!</button>
-`
+`;
   const bookNowButton = roomDetails.querySelector('#book-now-button');
   if (bookNowButton) {
-    
     bookNowButton.addEventListener('click', function (event) {
-      console.log('bookNow', event)
+      console.log('bookNow', event);
       const selectedDate = document.getElementById('selected-date-input').value;
-      // bookNowButton.dataset.roomNumber = room.number;
-      // bookNowButton.dataset.selectedDate = booking.date;
-
-      // console.log('Room Number:', room.number);
-      // console.log('Booking Date:', selectedDate);
-      // console.log('booking.date', booking)
       const userID = getUserId(username);
-      console.log('userID', userID)
+      console.log('userID', userID);
       let originalDateFormat = selectedDate.replace(/-/g, '/');
       createNewBooking(userID, originalDateFormat, room.number);
     });
@@ -174,20 +172,18 @@ export function displayNewBooking(data, booking) {
   if (bookingsArea) {
     const room = data.rooms.find(room => room.number === booking.roomNumber);
     if (room) {
-      console.log('room', room)
+      console.log('room', room);
       const roomCard = createRoomCard(room, booking);
-      console.log('roomCard', roomCard)
+      console.log('roomCard', roomCard);
       bookingsArea.appendChild(roomCard);
     }
   }
-  displayNewBookingMessage(newBooking)
+  displayNewBookingMessage(newBooking);
 }
 
-
-
-export function displayNewBookingMessage (data, newBooking) {
+export function displayNewBookingMessage(data, newBooking) {
   const successMessage = document.querySelector('.success-message');
-  
+
   if (successMessage) {
     successMessage.textContent = 'Room successfully booked!';
   }
