@@ -87,29 +87,43 @@ describe('it should filter available rooms by date', () => {
 });
 
 describe('filterRoomsByType', () => {
-  const data = {  // Your data structure
-    bookings: [/* ... */],
-    customers: [/* ... */],
-    rooms: [/* ... */],
-  };
+  it('should filter rooms by type correctly', () => {
+    const selectedRoomType = 'single room';
+    const filteredRooms = filterRoomsByType(selectedRoomType, data);
+    const room = filteredRooms[0];
 
-  it('should filter rooms by room type', () => {
-    const selectedRoomType = 'suite';
-    const searchForDate = '2022/02/05'; // Provide a date from your data
-    const filteredRooms = filterRoomsByType(selectedRoomType, data, searchForDate);
+    expect(filteredRooms).to.deep.equal([{
+      number: 3,
+      roomType: 'single room',
+      bidet: false,
+      bedSize: 'king',
+      numBeds: 1,
+      costPerNight: 491.14
+    },
+    {
+      number: 4,
+      roomType: 'single room',
+      bidet: false,
+      bedSize: 'queen',
+      numBeds: 1,
+      costPerNight: 429.44
+    },
+    {
+      number: 12,
+      roomType: 'single room',
+      bidet: false,
+      bedSize: 'twin',
+      costPerNight: 172.09
+    }]);
 
-    const expectedRoomType = 'suite';
-    filteredRooms.forEach(room => {
-      expect(room.roomType).to.equal(expectedRoomType);
-    });
-  });
-
-  it('should return an empty array when no rooms match the type', () => {
-    const selectedRoomType = 'nonexistent_type';
-    const searchForDate = '2022/02/05'; // Provide a date from your data
-    const filteredRooms = filterRoomsByType(selectedRoomType, data, searchForDate);
-
-    expect(filteredRooms).to.be.an('array').that.is.empty;
+    expect(room.roomType).to.equal(selectedRoomType);
   });
 });
+
+
+
+
+
+
+
 

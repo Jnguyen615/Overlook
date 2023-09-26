@@ -60,4 +60,5 @@ export function filterRoomsByType(selectedRoomType, data) {
   const filteredRoomsByType = data.rooms.filter(
     room => room.roomType === selectedRoomType,
   );
+  return filteredRoomsByType
 }
