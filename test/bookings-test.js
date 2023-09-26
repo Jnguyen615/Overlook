@@ -1,8 +1,12 @@
 const expect = chai.expect;
 import chai from 'chai';
 import { data } from '../src/data/testData';
-import { getUserId, getBookingsByCustomer, calculateTotalRoomCost, convertDateStringsToDates } from '../src/bookings';
-
+import {
+  getUserId,
+  getBookingsByCustomer,
+  calculateTotalRoomCost,
+  getAvailableRoomsByDate,
+} from '../src/bookings';
 
 describe('getUserId', () => {
   it('should return the correct user ID for valid customer username', () => {
@@ -72,14 +76,11 @@ describe('Calculate Total Room Cost', function () {
   });
 });
 
+describe('it should filter available rooms by date', () => {
+  it('should return the correct available room numbers for a valid date', () => {
+    const searchForDate = '2022-01-24';
+    const availableRooms = getAvailableRoomsByDate(data, searchForDate);
 
-
-
-
-
-
-
-
-
-
-
+    expect(availableRooms).to.deep.equal([1, 2, 3, 4, 12]);
+  });
+});
