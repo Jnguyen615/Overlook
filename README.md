@@ -62,4 +62,6 @@ In order for this application to function, it will require accessing both our ba
 - I'd like to implement a date picker for the calendar
 - I'd like to have a vertical scrolling bar
 - I'd like to do a counter - where on login the numbers for the total cost go up. 
-- Better styling - I'd like to revamp the styling. 
+- Better styling - I'd like to revamp the styling.
+- Split up the past and upcoming bookings in their own sections and make sure the new booking gets added to it
+- Fix the error handling 
