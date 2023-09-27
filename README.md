@@ -38,7 +38,7 @@ In order for this application to function, it will require accessing both our ba
 <img width="1351" alt="Screenshot 2023-09-26 at 5 46 03 PM" src="https://github.com/Jnguyen615/Overlook/assets/119434450/f46d134c-3e9a-440f-8aa9-1f281b6e3d9a">
 <img width="1345" alt="Screenshot 2023-09-26 at 5 46 16 PM" src="https://github.com/Jnguyen615/Overlook/assets/119434450/33213a19-5284-42ae-8b1f-7908e0ad1fb8">
 <img width="1302" alt="Screenshot 2023-09-26 at 5 46 30 PM" src="https://github.com/Jnguyen615/Overlook/assets/119434450/b6146d60-c05f-4136-abd8-43b706cdd090">
-<div style="width:100%;height:0;padding-bottom:57%;position:relative;"><iframe src="https://giphy.com/embed/y9OUbjnbBB14QkOQ7U" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/y9OUbjnbBB14QkOQ7U">via GIPHY</a></p>
+
 
 ### Learning Goals
 - Use object and array prototype methods to perform data manipulation 
@@ -63,4 +63,3 @@ In order for this application to function, it will require accessing both our ba
 - I'd like to have a vertical scrolling bar
 - I'd like to do a counter - where on login the numbers for the total cost go up. 
 - Better styling - I'd like to revamp the styling. 
-- Overall I have a lot of improvements I'd liek to make to the app! 
