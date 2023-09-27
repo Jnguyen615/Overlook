@@ -122,23 +122,7 @@ export function createNewBookingRoomCard(room, username) {
   <br></br>
     <button id="book-now-button" type="button">Book Now!</button>
 `;
-  const bookNowButton = roomDetails.querySelector('#book-now-button');
-  if (bookNowButton) {
-    bookNowButton.addEventListener('click', function (event) {
-      event.preventDefault();
-      const selectedDate = document.getElementById('selected-date-input').value;
-      const userID = getUserId(username);
-      let originalDateFormat = selectedDate.replace(/-/g, '/');
-      createNewBooking(userID, originalDateFormat, room.number).then(
-        updatedBookings => {
-          data.bookings = updatedBookings;
-        },
-      );
-    });
 
-    card.appendChild(roomDetails);
-    return card;
-  }
 }
 
 export function generateRoomCards(data, searchForDate, username) {
