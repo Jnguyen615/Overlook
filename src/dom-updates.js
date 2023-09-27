@@ -174,7 +174,6 @@ export function displayNewBooking(data, booking) {
       const room = data.rooms[booking.roomNumber];
       if (room) {
         const roomCard = createRoomCard(booking);
-        console.log('roomCard', roomCard);
         bookingsArea.appendChild(roomCard);
       }
     }
@@ -182,7 +181,7 @@ export function displayNewBooking(data, booking) {
   displayNewBookingMessage(booking);
 }
 
-export function displayNewBookingMessage(newBooking) {
+export function displayNewBookingMessage(data, newBooking) {
   const successMessage = document.querySelector('.available-room-text');
 
   if (successMessage) {

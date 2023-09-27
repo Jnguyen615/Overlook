@@ -105,7 +105,7 @@ dateInput.addEventListener('input', function () {
 });
 
 function checkInputs() {
-  const username = usernameInput.value.trim();
+    username = usernameInput.value.trim();
   const password = passwordInput.value.trim();
   if (username !== '' && password !== '') {
     loginButton.removeAttribute('disabled');
@@ -136,6 +136,6 @@ backToMainButton.addEventListener('click', function (event) {
   searchViewTopBar.hidden = true;
   searchView.hidden = true;
   mainPageView.hidden = false;
-  ƒ;
+  
   populateRoomCardSection(data.rooms, userID, data.bookings, bookingsArea);
 });
