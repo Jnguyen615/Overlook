@@ -3,7 +3,6 @@
 ### Abstract 
 - I built a room booking website using GET and POSt from an API server. The site allows user to book rooms, see their past and upcoming bookings and filter by room type. 
 
-
 ### Context
 - I am currently in Mod 2 at Turing School of Software and design. It is a seven month bootcamp and I am currenlty learning front end. 
 
@@ -40,13 +39,13 @@ In order for this application to function, it will require accessing both our ba
 <img width="1345" alt="Screenshot 2023-09-26 at 5 46 16 PM" src="https://github.com/Jnguyen615/Overlook/assets/119434450/33213a19-5284-42ae-8b1f-7908e0ad1fb8">
 <img width="1302" alt="Screenshot 2023-09-26 at 5 46 30 PM" src="https://github.com/Jnguyen615/Overlook/assets/119434450/b6146d60-c05f-4136-abd8-43b706cdd090">
 
+
 ### Learning Goals
 - Use object and array prototype methods to perform data manipulation 
 - create a clear and accessible user interface 
 - Make network requests to retrieve data
 - Implement a testing suite using TDD
 - Write dry, reusable code that follows single responsibility principle 
-
 
 ### Wins 
 - Getting the data in successfully.

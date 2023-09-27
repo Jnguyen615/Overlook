@@ -7,8 +7,6 @@ import {
   displayTotalSpent,
   displayAvailableRoomCards,
   displayFilteredRooms,
-  createNewBooking,
-  displayNewBooking,
 } from './dom-updates';
 import { getUserId, filterRoomsByType } from './bookings';
 import './images/main-view-background.png';
@@ -31,6 +29,7 @@ const container = document.getElementById('available-rooms-section');
 const searchView = document.querySelector('.search-view');
 const dropDownMenu = document.getElementById('dropdown');
 const backToMainButton = document.getElementById('back-to-main');
+const totalSpent = document.querySelector('.total-spent');
 
 let data;
 let username;
@@ -77,7 +76,7 @@ loginButton.addEventListener('click', function (event) {
     const customerName = getCustomer(userID, data);
     if (bookingsArea) {
       populateRoomCardSection(data.rooms, userID, data, bookingsArea);
-      displayTotalSpent(userID, data);
+      displayTotalSpent(userID, data, totalSpent);
     }
     welcomeTitle.textContent = `Welcome ${customerName}`;
   } else {
@@ -137,5 +136,6 @@ backToMainButton.addEventListener('click', function (event) {
   searchViewTopBar.hidden = true;
   searchView.hidden = true;
   mainPageView.hidden = false;
-  populateRoomCardSection(data.rooms, userID, data, bookingsArea);
+  ƒ;
+  populateRoomCardSection(data.rooms, userID, data.bookings, bookingsArea);
 });
