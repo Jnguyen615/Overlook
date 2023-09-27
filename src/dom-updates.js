@@ -64,9 +64,7 @@ export function populateRoomCardSection(rooms, userID, data, bookingsArea) {
   });
 }
 
-export function displayTotalSpent(userId, data) {
-  const totalSpent = document.querySelector('.total-spent');
-
+export function displayTotalSpent(userId, data, totalSpent) {
   if (totalSpent) {
     const totalCost = calculateTotalRoomCost(userId, data);
     totalSpent.textContent = `Total Spent: $${totalCost.toFixed(2)}`;
@@ -86,7 +84,7 @@ export function displayAvailableRoomCards(
   });
 }
 
-export function createNewBookingRoomCard(room, username) {
+export function createNewBookingRoomCard(data, room, username) {
   const card = document.createElement('div');
   card.classList.add('new-booking-room-card');
 
@@ -116,13 +114,29 @@ export function createNewBookingRoomCard(room, username) {
   <tr>
     <td>Cost Per Night:</td>
     <td>$${room.costPerNight}</td>
-   
   </tr>
   </table>
   <br></br>
-    <button id="book-now-button" type="button">Book Now!</button>
+  <button id="book-now-button" type="button">Book Now!</button>
 `;
+   
+  const bookNowButton = roomDetails.querySelector('#book-now-button');
+  if (bookNowButton) {
+    bookNowButton.addEventListener('click', function (event) {
+      event.preventDefault();
+      const selectedDate = document.getElementById('selected-date-input').value;
+      const userID = getUserId(username);
+      let originalDateFormat = selectedDate.replace(/-/g, '/');
+      createNewBooking(userID, originalDateFormat, room.number).then(
+        updatedBookings => {
+          data.bookings = updatedBookings;
+        },
+      );
+    });
 
+    card.appendChild(roomDetails);
+    return card;
+  }
 }
 
 export function generateRoomCards(data, searchForDate, username) {
@@ -135,7 +149,7 @@ export function generateRoomCards(data, searchForDate, username) {
       booking => booking.roomNumber === roomNumber,
     );
 
-    const card = createNewBookingRoomCard(room, username);
+    const card = createNewBookingRoomCard(data, room, username);
     roomCards.push(card);
   });
   return roomCards;
@@ -160,7 +174,7 @@ export function displayNewBooking(data, booking) {
       const room = data.rooms[booking.roomNumber];
       if (room) {
         const roomCard = createRoomCard(booking);
-
+        console.log('roomCard', roomCard);
         bookingsArea.appendChild(roomCard);
       }
     }
@@ -168,7 +182,7 @@ export function displayNewBooking(data, booking) {
   displayNewBookingMessage(booking);
 }
 
-export function displayNewBookingMessage(data, newBooking) {
+export function displayNewBookingMessage(newBooking) {
   const successMessage = document.querySelector('.available-room-text');
 
   if (successMessage) {
